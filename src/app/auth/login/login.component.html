@@ -1,0 +1,27 @@
+<div class="login-container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <div class="login-box">
+       <div class="login-form">
+          <!-- <a href="index.html" class="login-logo"><img src="img/logo.svg" alt=" Admin" /></a> -->
+          <h3 class="text-center">Login</h3>
+          <div class="login-welcome">Welcome back, <br />Please login to your Admin account.</div>
+          <div class="mb-3"><label class="form-label">Username <span  class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="username"></div>
+            <small class="text-danger" *ngIf="f['username'].touched && f['username'].invalid">
+              <div *ngIf="f['username'].errors && f['username'].errors['required']">UserName is required.</div>
+            </small>
+          <div class="mb-3">
+             <div class="d-flex justify-content-between"><label class="form-label">Password<span  class="text-danger">*</span></label>
+              <a class="btn-link ml-auto">Forgot password?</a></div>
+             <input type="password" class="form-control" formControlName="password">
+             <small  class="text-danger" *ngIf="f['password'].invalid &&  f['password'].touched">
+              <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+              <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password must be at least 6 characters.</div>
+          </small>
+          </div>
+          <div class="login-form-actions"><button type="submit" class="btn"><span class="icon"><i class="bi bi-arrow-right-circle"></i>
+          </span>Login</button></div>
+       </div>
+    </div>
+ </form>
+</div>
