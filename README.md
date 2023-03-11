@@ -1,9 +1,10 @@
 # Admin-Panel
-First make a new branch then do the changes
 Please changes carefully
-Use the following git command to use this project..
-steps :-
 
+First make a new branch then do the changes.
+Use the following git command to use this project..
+
+steps :-
 1) git pull
 2) git checkout -b branch name
   after changes in file
