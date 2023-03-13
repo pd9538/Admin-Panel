@@ -11,6 +11,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 export class AdminHeaderComponent implements OnInit {
 
   theme:string='bootstrap';
+  public now=new Date().getHours();
 
   constructor(private loginService:LoginService,
               private router:Router,
@@ -26,6 +27,7 @@ export class AdminHeaderComponent implements OnInit {
         }
         this.renderer.addClass(document.body,theme.newValue);
       })
+      console.log(this.now);
     }
     logout(){
       this.loginService.logout();
