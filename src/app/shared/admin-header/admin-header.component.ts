@@ -1,7 +1,7 @@
-import { ThemeService } from './../services/theme.service';
-import { Router } from '@angular/router';
 import { LoginService } from './../../auth/services/login.service';
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-header',
@@ -9,36 +9,16 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent implements OnInit {
-
-  theme:string='bootstrap';
+  username=localStorage.getItem('username');
   public now=new Date().getHours();
+  constructor(public router:Router,
+    private loginService:LoginService){}
+  ngOnInit(){}
 
-  constructor(private loginService:LoginService,
-              private router:Router,
-              private themeService:ThemeService,
-              private renderer:Renderer2
-    ){}
-    username=localStorage.getItem('username');
 
-    ngOnInit(): void {
-      this.themeService.themeChanges().subscribe(theme=>{
-        if(theme.oldValue){
-            this.renderer.removeClass(document.body,theme.oldValue);
-        }
-        this.renderer.addClass(document.body,theme.newValue);
-      })
-      console.log(this.now);
-    }
-    logout(){
-      this.loginService.logout();
-    }
+  logout(){
+    this.loginService.logout();
+  }
 
-    toggleTheme(){
-      if(this.theme==='bootstrap'){
-        this.theme='bootstrap-dark';
-      }else{
-        this.theme='bootstrap';
-      }
-      this.themeService.setTheme(this.theme);
-    }
+
 }

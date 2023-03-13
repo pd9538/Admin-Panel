@@ -1,8 +1,21 @@
-<nav class="sidebar-wrapper">
+<nav class="sidebar-wrapper" style="padding-left:0px">
   <div class="sidebar-brand sticky-top">
     <a routerLink="dashboard" class="logo">
       <img src="" alt="Admin Dashboard"/>
     </a>
+  </div>
+  <div>
+    <div class="search-container" *ngIf="this.now < 12; else afternoon">
+      <div class="input-group btn btn-light" style="border-radius: 50px;">Good Morning! {{username | uppercase}}</div>
+  </div>
+  <ng-template #afternoon class="search-container">
+    <div class="input-group btn btn-light" style="border-radius: 50px;" *ngIf="this.now>=12 && this.now<16; else evening">
+      Good Noon! {{username | uppercase}}</div>
+  </ng-template>
+  <ng-template #evening class="search-container">
+    <div class="pl-4 ml-3 menu-text text-center" style="border-radius:50px;">
+    Good Evening! {{username | uppercase}}</div>
+  </ng-template>
   </div>
   <div class="sidebar-menu">
     <div class="sidebarMenuScroll">
@@ -17,25 +30,23 @@
             </ul>
           </div>
         </li>
-        <li class="sidebar-dropdown">
-          <a href="#">
-            <i class="bi bi-handbag"></i>
-            <span class="menu-text">Product</span></a>
-          <div class="sidebar-submenu">
-            <ul>
 
+        <li class="sidebar-dropdown">
+          <a routerLink="myaccount/profile">
+            <i class="bi bi-gear"></i>
+            <span class="menu-text">My Account</span></a>
+            <div class="sidebar-submenu">
+            <ul>
+              <li><a routerLink="myaccount/profile">Profile</a></li>
+              <li><a routerLink="myaccount/settings">Settings</a></li>
             </ul>
           </div>
         </li>
-        <li class="sidebar-dropdown">
-          <a href="#">
-            <i class="bi bi-gem"></i>
-            <span class="menu-text">Widgets</span></a>
-          <div class="sidebar-submenu">
-            <ul>
 
-            </ul>
-          </div>
+        <li class="sidebar-menu">
+          <a routerLink="" (click)="logout()">
+            <i class="bi bi-box-arrow-left"></i>
+            <span class="menu-text">Logout</span></a>
         </li>
         <li class="sidebar-dropdown">
           <a href="#">
@@ -47,7 +58,7 @@
             </ul>
           </div>
         </li>
-        <li class="sidebar-dropdown active">
+        <li class="sidebar-dropdown">
           <a href="#">
             <i class="bi bi-stickies"></i>
             <span class="menu-text">Pages</span></a>
@@ -126,79 +137,3 @@
   </div>
 </nav>
 
-<div class="main-container">
-  <div class="page-header">
-    <div class="toggle-sidebar" id="toggle-sidebar">
-      <i class="bi bi-list"></i>
-    </div>
-    <!-- <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <i class="bi bi-house"></i><a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item">Pages</li>
-      <li class="breadcrumb-item breadcrumb-active" aria-current="page">
-        Profile
-      </li>
-    </ol> -->
-    <div class="header-actions-container">
-      <!-- <div class="search-container">
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search anything"/>
-            <button class="btn" type="button">
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
-      </div> -->
-      <!-- <a routerLink="dashboard/notification" class="leads d-none d-xl-flex">
-        <div class="lead-details">
-          You have <span class="count">21 </span>new leads
-        </div>
-        <span class="lead-icon">
-          <i class="bi bi-bell-fill animate__animated animate__swing animate__infinite infinite"></i>
-          <b class="dot animate__animated animate__heartBeat animate__infinite"></b></span>
-        </a> -->
-      <ul class="header-actions">
-        <li>
-          <div class="oval" [ngClass]="{ovalSelected:theme=='bootstrap'}" (click)="toggleTheme()">
-            <div class="button" [ngClass]="{buttonSelectd:theme=='bootstrap'}"></div>
-          </div>
-        </li>
-        <li>
-          <div class="search-container" *ngIf="this.now >= 12; else morning">
-              <div class="input-group form-control" style="border-radius: 50px;">Good Afternoon! {{username | uppercase}}</div>
-          </div>
-          <ng-template #morning class="search-container">
-            <div class="input-group btn btn-light" style="border-radius: 50px;">Good Morning! {{username | uppercase}}</div>
-          </ng-template>
-        </li>
-        <li>
-          <a class="btn btn-danger" style="border-radius: 50px;" (click)="logout()">
-            <i class="bi bi-exclamation-circle" style="color: white;"></i>Logout</a>
-        </li>
-        <!-- <li class="dropdown">
-          <a
-            routerLink="dashboard"
-            id="userSettings"
-            class="user-settings"
-            data-toggle="dropdown"
-            aria-haspopup="true">
-            <span class="user-name d-none d-md-block">Welcome, {{ username}}</span>
-              <span class="avatar">
-              <img src="" alt="User Avatar" />
-              <span class="status online">
-              </span></span></a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
-            <div class="header-profile-actions">
-              <a routerLink="dashboard/profile">Profile</a>
-              <a routerLink="dashboard/settings">Settings</a>
-              <a routerLink="" (click)="logout()">Logout</a>
-            </div>
-          </div>
-        </li> -->
-      </ul>
-    </div>
-  </div>
-</div>

@@ -43,7 +43,8 @@
               "./src/assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js",
               "./src/assets/vendor/overlay-scroll/custom-scrollbar.js",
               "./src/assets/js/modernizr.js",
-              "./src/assets/js/moment.js"
+              "./src/assets/js/moment.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js"
             ]
           },
           "configurations": {
