@@ -161,7 +161,11 @@
           <b class="dot animate__animated animate__heartBeat animate__infinite"></b></span>
         </a>
       <ul class="header-actions">
-
+        <li>
+          <div class="oval" [ngClass]="{ovalSelected:theme=='bootstrap'}" (click)="toggleTheme()">
+            <div class="button" [ngClass]="{buttonSelectd:theme=='bootstrap'}"></div>
+          </div>
+        </li>
         <li class="dropdown">
           <a
             routerLink="dashboard"

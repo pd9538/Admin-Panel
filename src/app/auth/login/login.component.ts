@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
   onSubmit(){
       this.loginService.login(this.loginForm.value).subscribe(result=>{
           if(result.status==1){
-            console.log(result.data.name)
             const token=this.loginService.randomString(15);
             localStorage.setItem('token',token);
             this.isUserLoggedIn= result.status==1;
