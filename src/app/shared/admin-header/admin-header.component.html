@@ -18,7 +18,7 @@
         Good Evening! {{username | uppercase}}</div>
     </ng-template>
   </div>
-  <div class="sidebar-menu">
+  <div class="sidebar-menu ">
     <div class="sidebarMenuScroll">
       <ul>
         <li class="sidebar-dropdown">
@@ -27,21 +27,20 @@
             <span class="menu-text">Dashboards</span></a>
           <div class="sidebar-submenu"></div>
         </li>
+        <li class="sidebar-dropdown">
+          <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <i class="bi bi-gear"></i> <span class="ms-1 d-none d-sm-inline">My Account</span> </a>
+          <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+            <li class="w-100">
 
-        <li class="sidebar-dropdown dropright">
-          <a class="menu-item"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-gear"></i> My Account
-             
-           </a>
-                     
-            <div class="dropdown-menu dropright" aria-labelledby="dropdownMenuLink">
-            
-              <a class="dropdown-item" routerLink="myaccount/profile">Profile</a>
-              <a class="dropdown-item" routerLink="myaccount/settings">Settings</a>
-           
-          </div>
+              <a class="dropdown-item"  routerLink="myaccount/profile"> <i class="bi bi-person"></i> Profile </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="myaccount/settings"> <i class="bi bi-tools"></i> Settings </a>
+            </li>
+
+          </ul>
         </li>
-
         <li class="sidebar-menu">
           <a routerLink="" (click)="logout()">
             <i class="bi bi-box-arrow-left"></i>
