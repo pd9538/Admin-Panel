@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 bg-light text-right">
+      <a class="btn btn-primary" (click)="openModal(planModal)">Create</a>
+    </div>
+    <div class="col-md-12 pt-5 mt-5">
+          <table class="table table-striped table-hover mb-0 table-bordered align-middle">
+              <thead class="text-center">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Validity(days)</th>
+                  <th>Charges</th>
+                  <th>GST</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="col-md-2 align-middle text-center">
+                  <td>1</td>
+                  <td>ABC</td>
+                  <td>Gold</td>
+                  <td>300</td>
+                  <td>1200</td>
+                  <td>25</td>
+                  <td class="align-middle">
+                    <a class="btn btn-outline-primary btn-sm view-btn" (click)="openModal(planModal)">Edit</a>
+                   <span><img src="../../../assets/img/icons/deleteIcon.png" class="trash-cell"
+                    (click)="open(1)"
+                    ></span>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          <ng-template #planModal>
+            <div class="modal-header">
+              <h4 class="modal-title">Plan Details</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton>
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+
+              <form method="post" form="ngForm" (ngSubmit)="onSubmit()">
+                <div class="row mb-3">
+                <div class="col-md-6 ">
+                  <input type="text" placeholder="Name" formControlName="name" class="form-control">
+                </div>
+                <div class="col-md-6 ms-auto">
+                 <select id="type"  formControlName="type" class="form-control" onfocus="3">
+                    <option >Select Type</option>
+                    <option>Gold</option>
+                    <option>Silver</option>
+                    <option>Platinum</option>
+                </select>
+              </div>
+            </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <input type="number" placeholder="Validity(days)" formControlName="validity" class="form-control">
+                  </div>
+                  <div class="col-md-6 ms-auto">
+                    <input type="number" placeholder="Charges" formControlName="validity" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                  <input type="number" placeholder="GST" formControlName="gst" class="form-control">
+                </div>
+                  <div class="col-md-6 ms-auto">
+                  <textarea rows="3" placeholder="Description" formControlName="description" class="form-control"></textarea>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
+            </div>
+          </ng-template>
+    </div>
+  </div>
+</div>
