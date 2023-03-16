@@ -1,0 +1,23 @@
+.trash-cell{
+  margin: 6px 27px;
+  position: absolute;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  font-size: 22px;
+}
+
+.view-btn{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #175399;
+  border-color: #175399;
+  width: 50%;
+}
+
+.view-btn:hover{
+  color: #fff;
+  background-color: #175399;
+
+}

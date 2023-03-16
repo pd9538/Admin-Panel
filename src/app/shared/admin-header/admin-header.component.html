@@ -22,10 +22,9 @@
     <div class="sidebarMenuScroll">
       <ul>
         <li class="sidebar-dropdown">
-          <a href="#">
+          <a routerLink="dashboard">
             <i class="bi bi-house"></i>
             <span class="menu-text">Dashboards</span></a>
-          <div class="sidebar-submenu"></div>
         </li>
         <li class="sidebar-dropdown">
           <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -40,6 +39,12 @@
             </li>
 
           </ul>
+        </li>
+        <li class="sidebar-menu">
+          <a routerLink="plantable/planview">
+            <i class="bi bi-table"></i>
+            <span class="menu-text">PlanTable</span>
+          </a>
         </li>
         <li class="sidebar-menu">
           <a routerLink="" (click)="logout()">
