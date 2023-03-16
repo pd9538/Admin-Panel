@@ -1,3 +1,4 @@
+import { UserLogin } from './../userdata';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -9,24 +10,18 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginService {
 
-  private apiUrl="http://192.168.29.79/ciProject";
+  private apiUrl="http://192.168.29.79/AddBrand";
   redirectUrl:string="";
+  submitted:boolean=true;
   private token:string="";
-
-  httpOptions={
-    headers:new HttpHeaders({
-      'Content-Type':'application/json'
-    })
-  };
-
 
   constructor(
               private http:HttpClient,
               private router:Router
               ) { }
 
-  login(data:any):Observable<any>{
-    return this.http.post(`${this.apiUrl}/login`,data,this.httpOptions);
+  login(data:UserLogin):Observable<UserLogin>{
+    return this.http.post<UserLogin>(`${this.apiUrl}/login`,data);
   }
 
   setToken(token:string):void{
@@ -65,16 +60,5 @@ export class LoginService {
     localStorage.removeItem('isUserLoggedIn');
     this.router.navigate(['auth/login']);
   }
-
-  randomString(length:number) {
-    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var result = '';
-    for ( var i = 0; i < length; i++ ) {
-        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-    }
-    this.token=result;
-    return result;
-}
-
 
 }
