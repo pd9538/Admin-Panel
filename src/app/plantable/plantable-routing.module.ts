@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path:'planview',component:PlanviewComponent},
-  { path:'planedit',component:PlaneditComponent}
+
 ];
 
 @NgModule({
