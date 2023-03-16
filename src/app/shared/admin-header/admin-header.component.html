@@ -6,16 +6,16 @@
   </div>
   <div>
     <div class="search-container" *ngIf="this.now < 12; else afternoon">
-      <div class="input-group btn btn-light" style="border-radius: 50px;">Good Morning! {{username | uppercase}}</div>
+      <div class="input-group btn btn-light" style="border-radius: 50px;">Good Morning! Admin </div>
     </div>
     <ng-template #afternoon class="search-container">
       <div class="input-group btn btn-light" style="border-radius: 50px;"
         *ngIf="this.now>=12 && this.now<16; else evening">
-        Good Noon! {{username | uppercase}}</div>
+        Good Noon! Admin</div>
     </ng-template>
     <ng-template #evening class="search-container">
       <div class="pl-4 ml-3 menu-text text-center" style="border-radius:50px;">
-        Good Evening! {{username | uppercase}}</div>
+        Good Evening! Admin</div>
     </ng-template>
   </div>
   <div class="sidebar-menu ">

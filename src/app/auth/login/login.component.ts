@@ -26,25 +26,20 @@ export class LoginComponent implements OnInit {
     ){}
 
   ngOnInit(): void {
-    this.createForm();
+   this.loginForm=new FormGroup({
+    'mobile':new FormControl('',[Validators.required]),
+    'password':new FormControl('',[Validators.required])
+   });
   }
   get f(){ return this.loginForm.controls;}
 
-  createForm(){
-    this.loginForm=new FormGroup({
-      username:new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    })
-  }
-
   onSubmit(){
-      this.loginService.login(this.loginForm.value).subscribe(result=>{
-          if(result.status==1){
-            const token=this.loginService.randomString(15);
-            localStorage.setItem('token',token);
+      this.loginService.login(this.loginForm.value).subscribe((result:any)=>{
+          if(result.status==1 && result[0].token){
+            localStorage.setItem('token',result[0].token);
             this.isUserLoggedIn= result.status==1;
             localStorage.setItem('isUserLoggedIn',this.isUserLoggedIn?"true":"false");
-            localStorage.setItem('username',result.data.name);
+            localStorage.setItem('username',result[0].user_id);
             this.router.navigate(['root/dashboard']);
             setInterval(()=>{
               localStorage.removeItem('token');
@@ -55,7 +50,7 @@ export class LoginComponent implements OnInit {
             },90000)
           }
           else{
-            Swal.fire("Please Enter Valid Credential",result.errors.username,'error');
+            Swal.fire("Please Enter Valid Credential",result.error,'error');
           }
       })
       this.loginForm.reset();
