@@ -1,7 +1,9 @@
 <div>
   <div class="row mb-2 mx-auto ">
     <div class="col-md-12  ">
-      <a class="btn btn-primary col text-center text-white font-size-md float-end addButton">Create</a>
+      <a class="btn btn-primary col text-center text-white font-size-md float-end addButton"
+        routerLink="/root/dashboard/plantable/add-plan"
+      >Create</a>
     </div>
     </div>
   </div>
@@ -17,21 +19,21 @@
                   <th>Validity(days)</th>
                   <th>Charges</th>
                   <th>GST</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="col-md-2 align-middle text-center">
-                  <td>1</td>
-                  <td>ABC</td>
-                  <td>Gold</td>
-                  <td>300</td>
-                  <td>1200</td>
-                  <td>25</td>
+                <tr class="col-md-2 align-middle text-center" *ngFor="let plan of planTable">
+                  <td>{{plan.id}}</td>
+                  <td>{{plan.name}}</td>
+                  <td>{{plan.type}}</td>
+                  <td>{{plan.validity}}</td>
+                  <td>{{plan.charges}}</td>
+                  <td>{{plan.gst}}</td>
                   <td class="align-middle">
-                    <a class="btn btn-outline-primary btn-sm view-btn" >Edit</a>
+                    <a class="btn btn-outline-primary btn-sm view-btn" [routerLink]="['/root/dashboard/plantable/add-plan',plan.id]">Edit</a>
                    <span><img src="../../../assets/img/icons/deleteIcon.png" class="trash-cell"
-                    (click)="open(1)"
-                    ></span>
+                     (click)="delete(plan.id)"></span>
                   </td>
                 </tr>
               </tbody>

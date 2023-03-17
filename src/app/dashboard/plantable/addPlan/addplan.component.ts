@@ -1,6 +1,7 @@
+import { PlanService } from './../services/plan.service';
 import { NgbdModalContentComponent } from '../../../common/Modal/modal.component';
-import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,42 +11,60 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./addplan.component.css']
 })
 export class AddPlanComponent implements OnInit {
-
-  @ViewChild('closebutton') closebutton;
-
   planForm!:FormGroup;
   submitted:boolean=false;
-  planid:string;
+  editplanId:number;
   isEditMode:boolean=false;
+  planid:string;
 
+  get f(){ return this.planForm.controls; }
 
 constructor(private modalService:NgbModal,
             private fb:FormBuilder,
-            public router:Router
-    ){
-      this.planForm=this.fb.group({
-        name:['',[Validators.required]],
-        type:['',[Validators.required]],
-        validity:['',[Validators.required]],
-        charges:['',[Validators.required]],
-        gst:['',[Validators.required]],
-        description:['']
-      })
-    }
-
-
+            public router:Router,
+            private activeRoute:ActivatedRoute,
+            private planService:PlanService
+    ){}
     ngOnInit(): void {
-      this.planid=localStorage.getItem('planId');
-    }
-
-
-
-    onSubmit(){
-      this.closebutton.nativeElement.click();
-
-      this.planForm.patchValue({
-        planId:this.planid
+      this.getPlan();
+      this.planForm=new FormGroup({
+        'name':new FormControl('',[Validators.required]),
+        'type':new FormControl('',[Validators.required]),
+        'validity':new FormControl('',[Validators.required]),
+        'charges':new FormControl('',[Validators.required]),
+        'gst':new FormControl('',[Validators.required]),
+        'description':new FormControl('',[Validators.required])
       })
-
     }
+
+    getPlan(){
+      this.editplanId=this.activeRoute.snapshot.params.id;
+        if(this.editplanId!=undefined){
+          this.planService.getPlanById(this.editplanId).subscribe((plan:any)=>{
+            this.planForm.patchValue({
+              name:plan.data.name,
+              type:plan.data.type,
+              validity:plan.data.validity,
+              charges:plan.data.charges,
+              gst:plan.data.gst,
+              description:plan.data.description
+            })
+          })
+        }
+    }
+
+
+
+   savePlan(){
+      if(this.editplanId){
+        this.planService.updatePlan(this.editplanId,this.planForm.value);
+      }else{
+        let planData=this.planForm.value;
+        this.planService.createPlan(planData);
+      this.planForm.reset();
+      this.router.navigate(['/root/dashboard/plantable/planview']);
+    }
+  }
+
+
 }

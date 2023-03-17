@@ -1,50 +1,71 @@
 
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h3>Plan Details</h3>
 
-            <div class="modal-header">
-              <h4 class="modal-title">Plan Details</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton>
-                <span aria-hidden="true"></span>
-              </button>
             </div>
-            <div class="modal-body">
-              <div class="container">
-                <div class="row">
-
-              <form method="post" form="ngForm" (ngSubmit)="onSubmit()" [formGroup]="planForm">
-                <div class="row mb-3">
-                <div class="col-md-6 ">
-                  <input type="text" placeholder="Name" formControlName="name" class="form-control">
-                </div>
-                <div class="col-md-6 ms-auto">
-                 <select id="type"  formControlName="type" class="form-control" onfocus="3">
-                    <option >Select Type</option>
-                    <option>Gold</option>
-                    <option>Silver</option>
-                    <option>Platinum</option>
-                </select>
-              </div>
+            <div class="card-body">
+        <form method="post" form="ngForm" (ngSubmit)="savePlan()" [formGroup]="planForm">
+          <div class="row mb-3">
+          <div class="col-md-6 ">
+            <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
+            <small class="text-danger" *ngIf="f['name'].touched && f['name'].invalid">
+              <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            </small>
+          </div>
+          <div class="col-md-6 ms-auto">
+           <select id="type"  formControlName="type" class="form-control" onfocus="3" required>
+              <option value="" selected>Select Type</option>
+              <option>Gold</option>
+              <option>Silver</option>
+              <option>Platinum</option>
+          </select>
+          <small class="text-danger" *ngIf="f['type'].touched && f['type'].errors">
+            <div *ngIf="f['type'].errors && f['type'].errors['required']">Type is required.</div>
+          </small>
+        </div>
+      </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <input type="number" placeholder="Validity(days)" formControlName="validity" class="form-control" required>
+              <small class="text-danger" *ngIf="f['validity'].touched && f['validity'].invalid">
+                <div *ngIf="f['validity'].errors && f['validity'].errors['required']">Validity is required.</div>
+              </small>
             </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <input type="number" placeholder="Validity(days)" formControlName="validity" class="form-control">
-                  </div>
-                  <div class="col-md-6 ms-auto">
-                    <input type="number" placeholder="Charges" formControlName="validity" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                  <input type="number" placeholder="GST" formControlName="gst" class="form-control">
-                </div>
-                  <div class="col-md-6 ms-auto">
-                  <textarea rows="3" placeholder="Description" formControlName="description" class="form-control"></textarea>
-                </div>
-              </div>
-              </form>
+            <div class="col-md-6 ms-auto">
+              <input type="number" placeholder="Charges" formControlName="charges" class="form-control" required>
+              <small class="text-danger" *ngIf="f['charges'].touched && f['charges'].invalid">
+                <div *ngIf="f['charges'].errors && f['charges'].errors['required']">Charges is required.</div>
+              </small>
             </div>
           </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+            <input type="number" placeholder="GST" formControlName="gst" class="form-control" required>
+            <small class="text-danger" *ngIf="f['gst'].touched && f['gst'].invalid">
+              <div *ngIf="f['gst'].errors && f['gst'].errors['required']">Gst is required.</div>
+            </small>
+          </div>
+            <div class="col-md-6 ms-auto">
+            <textarea rows="3" placeholder="Description" formControlName="description" class="form-control" required></textarea>
+            <small class="text-danger" *ngIf="f['description'].touched && f['description'].errors">
+              <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is required.</div>
+            </small>
+          </div>
         </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
-            </div>
+        <div class="col-md-6">
+          <button class="btn btn-primary text-center text-white  float-end" type="submit"
+               [disabled]="!planForm.valid" >Save</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
 
