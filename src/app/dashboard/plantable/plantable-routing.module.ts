@@ -1,10 +1,11 @@
-import { PlaneditComponent } from './planedit/planedit.component';
-import { PlanviewComponent } from './planview/planview.component';
+import { PlanTableComponent } from './plantable.component';
+import { AuthGuard } from './../../auth/auth.guard';
+import { AddPlanComponent } from './addPlan/addplan.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'planview',component:PlanviewComponent},
+  { path:'planview',component:PlanTableComponent,canActivate:[AuthGuard]},
 
 ];
 

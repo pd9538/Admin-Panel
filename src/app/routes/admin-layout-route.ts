@@ -5,12 +5,5 @@ export const ADMIN_ROUTES : Routes = [
         path : "dashboard",
         loadChildren : () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
     },
-    {
-      path:"myaccount",
-      loadChildren:()=>import('../myaccount/myaccount.module').then(m=>m.MyaccountModule)
-    },
-    {
-      path:"plantable",
-      loadChildren:()=>import('../plantable/plantable.module').then(m=>m.PlantableModule)
-    }
+
 ];
