@@ -1,4 +1,4 @@
-import { NotificationComponent } from './notification/notification.component';
+
 import { AuthGuard } from './../auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +14,14 @@ const routes: Routes = [
     loadChildren:()=>import('./customer/customer.module').then(m=>m.CustomerModule)},
  
 
+  {
+    path:"myaccount",
+    loadChildren:()=>import('./myaccount/myaccount.module').then(m=>m.MyaccountModule)
+  },
+  {
+    path:"plantable",
+    loadChildren:()=>import('./plantable/plantable.module').then(m=>m.PlantableModule)
+  }
 ];
 
 @NgModule({

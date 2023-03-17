@@ -1,19 +1,19 @@
+import { PlanTableComponent } from './plantable.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbdModalComponentModule } from './../common/Modal/modal.module';
+import { NgbdModalComponentModule } from 'src/app/common/Modal/modal.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PlantableRoutingModule } from './plantable-routing.module';
-import { PlanviewComponent } from './planview/planview.component';
-import { PlaneditComponent } from './planedit/planedit.component';
-import { AddPlanComponent } from './add-plan/add-plan.component';
+import { AddPlanComponent } from './addPlan/addplan.component';
+
+
 
 
 @NgModule({
   declarations: [
-    PlanviewComponent,
-    PlaneditComponent,
-    AddPlanComponent
+    PlanTableComponent,
+    AddPlanComponent,
   ],
   imports: [
     CommonModule,

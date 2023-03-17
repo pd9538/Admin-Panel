@@ -1,6 +1,6 @@
+import { AuthGuard } from './../../auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../auth/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingComponent } from './settings/setting.component';
 
