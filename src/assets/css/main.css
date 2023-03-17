@@ -5099,5 +5099,43 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
   left:25px;
   background-color: #919191;
 }
+.btn.btn-rounded {
+    border-radius: 50px;
+}
 
+.heading {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 3px;
+    margin-left: 15px;
+    margin-right: 15px;
+    box-shadow: 5px 5px 6px 3px #abb3be;
+ }
 
+ tr,
+ td {
+    vertical-align: middle;
+ }
+
+ th {
+    text-align: center;
+    cursor : pointer;
+ }
+
+ @media screen and (max-width: 600px) {
+    .head {
+       visibility: hidden;
+       clear: both;
+       float: left;
+       margin: 10px auto 5px 20px;
+       width: 28%;
+       display: none;
+       
+    }
+ }
+ .btn i {
+    font-size: 1.3rem;
+ }
+ 
+ 
