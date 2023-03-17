@@ -5099,12 +5099,8 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
   left:25px;
   background-color: #919191;
 }
-
-.addButton{
-  position: relative;
-  top: 80px;
-  right: 10px;
+.btn.btn-rounded {
+    border-radius: 50px;
 }
-/* ---------------- */
-/*  Plantable       */
-/* ---------------- */
+
+
