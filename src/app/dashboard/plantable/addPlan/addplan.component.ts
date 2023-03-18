@@ -19,15 +19,14 @@ export class AddPlanComponent implements OnInit {
 
   get f(){ return this.planForm.controls; }
 
-constructor(private modalService:NgbModal,
-            private fb:FormBuilder,
-            public router:Router,
+constructor(public router:Router,
             private activeRoute:ActivatedRoute,
             private planService:PlanService
     ){}
     ngOnInit(): void {
       this.getPlan();
       this.planForm=new FormGroup({
+        'id':new FormControl({value:'',hidden:true}),
         'name':new FormControl('',[Validators.required]),
         'type':new FormControl('',[Validators.required]),
         'validity':new FormControl('',[Validators.required]),
