@@ -1,7 +1,6 @@
 import { PlanService } from './services/plan.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
 import { Plan } from 'src/app/Model/plan';
 

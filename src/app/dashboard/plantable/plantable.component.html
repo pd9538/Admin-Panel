@@ -1,25 +1,26 @@
-<div>
-  <div class="row mb-2 mx-auto ">
-    <div class="col-md-12  ">
-      <a class="btn btn-primary col text-center text-white font-size-md float-end addButton"
-        routerLink="/root/dashboard/plantable/add-plan"
-      >Create</a>
-    </div>
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-5  text-primary">Plan <span><a routerLink="/root/dashboard/plantable/add-plan" class="btn btn-sm btn-primary btn-rounded"><i class="bi bi-plus"></i> NEW</a></span>
+          </h1>
+        </div>
+      </div>
     </div>
   </div>
-    <div class="container">
-      <div class="row">
-    <div class="col-md-12 pt-5 mt-5">
+
+    <div class="table-responsive">
           <table class="table table-striped table-hover mb-0 table-bordered align-middle">
               <thead class="text-center">
                 <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Validity(days)</th>
-                  <th>Charges</th>
-                  <th>GST</th>
-                  <th>Action</th>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Validity(days)</th>
+                  <th scope="col">Charges</th>
+                  <th scope="col">GST</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -30,14 +31,14 @@
                   <td>{{plan.validity}}</td>
                   <td>{{plan.charges}}</td>
                   <td>{{plan.gst}}</td>
-                  <td class="align-middle btn-group">
-                    <a class="btn btn-outline-primary btn-sm view-btn" [routerLink]="['/root/dashboard/plantable/add-plan',plan.id]">Edit</a>
-                   <span><img src="../../../assets/img/icons/deleteIcon.png" class="trash-cell"
-                     (click)="delete(plan.id)"></span>
+                  <td class="btn-group">
+                    <a type="button" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                    <a type="button" class="btn btn-success" [routerLink]="['/root/dashboard/plantable/add-plan',plan.id]"><i class="bi bi-pencil-square"></i></a>
+                    <a type="button" class="btn btn-danger"  (click)="delete(plan.id)"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
               </tbody>
           </table>
         </div>
       </div>
-    </div>
+

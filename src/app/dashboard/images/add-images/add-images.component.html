@@ -1,0 +1,90 @@
+
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3>Image Details</h3>
+          </div>
+          <div class="card-body">
+      <form method="post" form="ngForm" (ngSubmit)="saveImage()" [formGroup]="imageForm" class="needs-validation" novalidate>
+        <div class="row mb-3">
+        <div class="col-md-6">
+          <input type="text" placeholder="Title" formControlName="title" class="form-control" required>
+          <small class="text-danger" *ngIf="f['title'].touched && f['title'].invalid">
+            <div *ngIf="f['title'].errors && f['title'].errors['required']">Title is required.</div>
+          </small>
+        </div>
+        <div class="col-md-6 ms-auto">
+          <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
+        <small class="text-danger" *ngIf="f['name'].touched && f['name'].errors">
+          <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+        </small>
+      </div>
+    </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <input type="number" placeholder="Download Count" formControlName="download_count" class="form-control" required>
+            <small class="text-danger" *ngIf="f['download_count'].touched && f['download_count'].invalid">
+              <div *ngIf="f['download_count'].errors && f['download_count'].errors['required']">Download Count is required.</div>
+            </small>
+          </div>
+          <div class="col-md-6 ms-auto">
+            <input type="number" placeholder="View Count" formControlName="view_count" class="form-control" required>
+            <small class="text-danger" *ngIf="f['view_count'].touched && f['view_count'].invalid">
+              <div *ngIf="f['view_count'].errors && f['view_count'].errors['required']">View Count is required.</div>
+            </small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+          <input type="number" placeholder="Like Count" formControlName="like_count" class="form-control" required>
+          <small class="text-danger" *ngIf="f['like_count'].touched && f['like_count'].invalid">
+            <div *ngIf="f['like_count'].errors && f['like_count'].errors['required']">Like Count is required.</div>
+          </small>
+        </div>
+          <div class="col-md-6 ms-auto">
+            <input type="text" placeholder="Category" formControlName="category" class="form-control" required>
+        <small class="text-danger" *ngIf="f['category'].touched && f['category'].errors">
+          <div *ngIf="f['category'].errors && f['category'].errors['required']">Category is required.</div>
+        </small>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <input type="text" placeholder="Subcategory" formControlName="subcategory" class="form-control" required>
+        <small class="text-danger" *ngIf="f['subcategory'].touched && f['subcategory'].errors">
+          <div *ngIf="f['subcategory'].errors && f['subcategory'].errors['required']">Subcategory is required.</div>
+        </small>
+      </div>
+      <div class="col-md-6 ms-auto">
+
+        <input class="form-control" placeholder="Date (yyyy-mm-dd)" formControlName="date" type="date">
+
+      </div>
+      <small class="text-danger invalid-feedback" *ngIf="f['date'].touched && f['date'].errors">
+        <div *ngIf="f['date'].errors && f['date'].errors['required']">Date is required.</div>
+      </small>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <textarea rows="3" placeholder="Description" formControlName="description" class="form-control" required></textarea>
+        <small class="text-danger" *ngIf="f['description'].touched && f['description'].errors">
+          <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is required.</div>
+        </small>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <button class="btn btn-primary text-center text-white  float-end" type="submit"
+             [disabled]="!imageForm.valid" >Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+

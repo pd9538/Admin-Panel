@@ -5,12 +5,12 @@
           <div class="card">
             <div class="card-header">
               <h3>Plan Details</h3>
-
             </div>
             <div class="card-body">
         <form method="post" form="ngForm" (ngSubmit)="savePlan()" [formGroup]="planForm">
+          <input type="hidden" formControlName="id">
           <div class="row mb-3">
-          <div class="col-md-6 ">
+          <div class="col-md-6">
             <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
             <small class="text-danger" *ngIf="f['name'].touched && f['name'].invalid">
               <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>

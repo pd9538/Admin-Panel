@@ -29,7 +29,7 @@ export class PlanService{
 
   updatePlan(id:number,value:any){
 
-    // return this.http.put(`${this.apiUrl}/${id}`,value)
+    // return this.http.put(`${this.apiUrl}`,value)
   }
 
   // deletePlan(id:number)Observable<any>{

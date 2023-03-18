@@ -8,10 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path:'',component:DashboardComponent,canActivate:[AuthGuard]},
 
-  {path:"customer",
-    loadChildren:()=>import('./customer/customer.module').then(m=>m.CustomerModule)},
-
-
+  {
+    path:"customer",
+    loadChildren:()=>import('./customer/customer.module').then(m=>m.CustomerModule)
+  },
   {
     path:"myaccount",
     loadChildren:()=>import('./myaccount/myaccount.module').then(m=>m.MyaccountModule)
@@ -19,7 +19,12 @@ const routes: Routes = [
   {
     path:"plantable",
     loadChildren:()=>import('./plantable/plantable.module').then(m=>m.PlantableModule)
+  },
+  {
+    path:"images",
+    loadChildren:()=>import('./images/images.module').then(m=>m.ImagesModule)
   }
+
 ];
 
 @NgModule({
