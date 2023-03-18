@@ -30,7 +30,7 @@
                   <td>{{plan.validity}}</td>
                   <td>{{plan.charges}}</td>
                   <td>{{plan.gst}}</td>
-                  <td class="align-middle">
+                  <td class="align-middle btn-group">
                     <a class="btn btn-outline-primary btn-sm view-btn" [routerLink]="['/root/dashboard/plantable/add-plan',plan.id]">Edit</a>
                    <span><img src="../../../assets/img/icons/deleteIcon.png" class="trash-cell"
                      (click)="delete(plan.id)"></span>
