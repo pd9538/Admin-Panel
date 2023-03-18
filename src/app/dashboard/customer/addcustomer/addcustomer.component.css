@@ -1,11 +1,9 @@
-.card .card-body {
-    padding: 1rem 1.25rem;
-}
-.form-control {
-    border: 1px solid #c3cbd6;
-    border-radius: 4px;
-    color: #232629;
-    font-size: 15px;
-    min-height: 40px;
-    background-color: #ffffff;
-}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
