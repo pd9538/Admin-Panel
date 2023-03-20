@@ -7,16 +7,21 @@ import { CustomerComponent } from './customer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+
+
 @NgModule({
   declarations: [
     CustomerComponent,
-    AddcustomerComponent
+    AddcustomerComponent,
+    
+    
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
   ]
 })
 export class CustomerModule { }
