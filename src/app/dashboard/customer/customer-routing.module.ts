@@ -6,7 +6,8 @@ import { CustomerComponent } from './customer.component';
 
 const routes: Routes = [
   {path:'customer',component:CustomerComponent,canActivate:[AuthGuard]},
-  {path:'addcustomer',component:AddcustomerComponent,canActivate:[AuthGuard]}
+  {path:'add-customer',component:AddcustomerComponent,canActivate:[AuthGuard]},
+  {path:'add-customer/:id',component:AddcustomerComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
