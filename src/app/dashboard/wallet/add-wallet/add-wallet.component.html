@@ -1,0 +1,53 @@
+
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3>Wallet Details</h3>
+          </div>
+          <div class="card-body">
+      <form method="post" form="ngForm" (ngSubmit)="saveWallet()" [formGroup]="walletForm">
+        <input type="hidden" formControlName="id">
+        <div class="row mb-3">
+        <div class="col-md-6">
+          <input type="number" placeholder="Credit Amount" formControlName="credit" class="form-control" required>
+          <small class="text-danger" *ngIf="f['credit'].touched && f['credit'].invalid">
+            <div *ngIf="f['credit'].errors && f['credit'].errors['required']">Credit Amount is required.</div>
+          </small>
+        </div>
+        <div class="col-md-6 ms-auto">
+          <input type="number" placeholder="Debit Amount" formControlName="debit" class="form-control" required>
+        <small class="text-danger" *ngIf="f['debit'].touched && f['debit'].errors">
+          <div *ngIf="f['debit'].errors && f['debit'].errors['required']">Debit Amount is required.</div>
+        </small>
+      </div>
+    </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <input type="number" placeholder="Balance" formControlName="balance" class="form-control" required>
+            <small class="text-danger" *ngIf="f['balance'].touched && f['balance'].invalid">
+              <div *ngIf="f['balance'].errors && f['balance'].errors['required']">Balance is required.</div>
+            </small>
+          </div>
+          <div class="col-md-6 ms-auto">
+            <input type="text" placeholder="Transaction Type" formControlName="ttype" class="form-control" required>
+            <small class="text-danger" *ngIf="f['ttype'].touched && f['ttype'].invalid">
+              <div *ngIf="f['ttype'].errors && f['ttype'].errors['required']">Transaction Type is required.</div>
+            </small>
+          </div>
+        </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-primary text-center text-white  float-end" type="submit"
+             [disabled]="!walletForm.valid" >Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+

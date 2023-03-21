@@ -20,20 +20,31 @@ export class AddPlanComponent implements OnInit {
   get f(){ return this.planForm.controls; }
 
 constructor(public router:Router,
+            private fb:FormBuilder,
             private activeRoute:ActivatedRoute,
             private planService:PlanService
-    ){}
+    ){
+      this.planForm=this.fb.group({
+        id:[{value:'',hidden:true}],
+        name:['',[Validators.required]],
+        type:['',[Validators.required]],
+        validity:['',[Validators.required]],
+        charges:['',[Validators.required]],
+        gst:['',[Validators.required]],
+        description:['',[Validators.required]]
+      })
+    }
     ngOnInit(): void {
       this.getPlan();
-      this.planForm=new FormGroup({
-        'id':new FormControl({value:'',hidden:true}),
-        'name':new FormControl('',[Validators.required]),
-        'type':new FormControl('',[Validators.required]),
-        'validity':new FormControl('',[Validators.required]),
-        'charges':new FormControl('',[Validators.required]),
-        'gst':new FormControl('',[Validators.required]),
-        'description':new FormControl('',[Validators.required])
-      })
+      // this.planForm=new FormGroup({
+      //   'id':new FormControl({value:'',hidden:true}),
+      //   'name':new FormControl('',[Validators.required]),
+      //   'type':new FormControl('',[Validators.required]),
+      //   'validity':new FormControl('',[Validators.required]),
+      //   'charges':new FormControl('',[Validators.required]),
+      //   'gst':new FormControl('',[Validators.required]),
+      //   'description':new FormControl('',[Validators.required])
+      // })
     }
 
     getPlan(){
@@ -56,7 +67,9 @@ constructor(public router:Router,
 
    savePlan(){
       if(this.editplanId){
-        this.planService.updatePlan(this.editplanId,this.planForm.value);
+        let data = this.planForm.value;
+        console.log(data);
+        this.planService.updatePlan(data);
       }else{
         let planData=this.planForm.value;
         this.planService.createPlan(planData);

@@ -11,8 +11,6 @@ import { Plan } from 'src/app/Model/plan';
 export class PlanTableComponent implements OnInit{
   plans:Observable<Plan[]>;
 
-  @Input() deleteConfirmation;
-
   planTable:Plan[]=[];
   showNew:boolean=false;
   planType:string[]=['Gold','Silver','Platinum'];
