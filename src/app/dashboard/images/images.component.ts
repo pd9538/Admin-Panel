@@ -20,7 +20,6 @@ export class ImagesComponent implements OnInit{
       }
 
       reloadData(){
-        console.log(this.imageService.getImageList());
         this.images=this.imageService.getImageList();
       }
 

@@ -59,8 +59,9 @@
       </div>
       <div class="col-md-6 ms-auto">
 
-        <input class="form-control" placeholder="Date (yyyy-mm-dd)" formControlName="date" type="date">
-
+        <input class="form-control" placeholder="Date (yyyy-mm-dd)" formControlName="date" type="text"
+        onfocus="(this.type='date')"
+        >
       </div>
       <small class="text-danger invalid-feedback" *ngIf="f['date'].touched && f['date'].errors">
         <div *ngIf="f['date'].errors && f['date'].errors['required']">Date is required.</div>

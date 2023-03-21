@@ -1,6 +1,6 @@
 import { ImageService } from './../services/image.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -23,22 +23,36 @@ export class AddImagesComponent implements OnInit {
 
   constructor(public router:Router,
     private activeRoute:ActivatedRoute,
-    private imageService:ImageService
-){}
+    private imageService:ImageService,
+    private fb:FormBuilder
+){
+  this.imageForm=fb.group({
+    id:[{value:'',hidden:true}],
+    title:['',[Validators.required]],
+    name:['',[Validators.required]],
+    download_count:['',[Validators.required]],
+    view_count:['',[Validators.required]],
+    like_count:['',[Validators.required]],
+    category:['',[Validators.required]],
+    subcategory:['',[Validators.required]],
+    description:['',[Validators.required]],
+    date:['',[Validators.required]]
+  })
+}
 ngOnInit(): void {
 this.getImage();
-this.imageForm=new FormGroup({
-  'id':new FormControl(),
-  'title':new FormControl('',[Validators.required]),
-  'name':new FormControl('',[Validators.required]),
-  'download_count':new FormControl('',[Validators.required]),
-  'view_count':new FormControl('',[Validators.required]),
-  'like_count':new FormControl('',[Validators.required]),
-  'category':new FormControl('',[Validators.required]),
-  'subcategory':new FormControl('',[Validators.required]),
-  'description':new FormControl('',[Validators.required]),
-  'date':new FormControl('',[Validators.required])
-})
+// this.imageForm=new FormGroup({
+//   'id':new FormControl(),
+//   'title':new FormControl('',[Validators.required]),
+//   'name':new FormControl('',[Validators.required]),
+//   'download_count':new FormControl('',[Validators.required]),
+//   'view_count':new FormControl('',[Validators.required]),
+//   'like_count':new FormControl('',[Validators.required]),
+//   'category':new FormControl('',[Validators.required]),
+//   'subcategory':new FormControl('',[Validators.required]),
+//   'description':new FormControl('',[Validators.required]),
+//   'date':new FormControl('',[Validators.required])
+// })
 }
 
   getImage(){
