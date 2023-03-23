@@ -26,7 +26,7 @@ export class AddcustomerComponent implements OnInit {
         'mobile_number':new FormControl('',[Validators.required,Validators.pattern("^([0-9]{10})$")]),
         'email-id':new FormControl('',[Validators.required,Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]),
         'aadhar_card':new FormControl('',[Validators.required,Validators.pattern('^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$')]),
-        'pan_card':new FormControl('',[Validators.required]),
+        'pan_card':new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$')]),
       })
     }
 

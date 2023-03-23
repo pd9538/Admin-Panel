@@ -63,7 +63,7 @@
                     <div class="col-md-4 mb-4">
                       <div class="form-outline">
                         <label class="form-label" for="pin">Pin <span class="text-danger"> *</span></label>
-                        <input type="text" (keypress)="onlynumbersallowed($event)"  formControlName="pin"   id="number" class="form-control form-control-lg"/>
+                        <input type="text" (keypress)="onlynumbersallowed($event)"  formControlName="pin"   id="number" class="form-control form-control-lg"  maxlength="6"/>
                         <small class="text-danger" *ngIf="f['pin'].touched && f['pin'].errors">
                           <div *ngIf="f['pin'].errors && f['pin'].errors['required']">pin is  required.</div>
                           <div *ngIf="f['pin'].errors && f['pin'].errors?.pattern">Pin is not Valid</div>
@@ -136,7 +136,7 @@
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
                         <label class="form-label" for="mobile_number">Mobile number  <span class="text-danger"> *</span></label>
-                        <input type="text"  (keypress)="onlynumbersallowed($event)" formControlName="mobile_number"  class="form-control form-control-lg" >
+                        <input type="text"  (keypress)="onlynumbersallowed($event)" formControlName="mobile_number"  class="form-control form-control-lg" maxlength="10" >
                         <small class="text-danger" *ngIf="f['mobile_number'].touched && f['mobile_number'].errors">
                           <div *ngIf="f['mobile_number'].errors && f['mobile_number'].errors['required']">Mobile number is  required.</div>
                           <div *ngIf="f['mobile_number'].errors && f['mobile_number'].errors?.pattern">Mobile Number is Invalid.</div>
@@ -171,7 +171,7 @@
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
                         <label class="form-label" for="pan_card"> Pan Card <span class="text-danger"> *</span></label>
-                        <input type="text" formControlName="pan_card" id="form3Example1n1" class="form-control form-control-lg" required>
+                        <input type="text" formControlName="pan_card" id="form3Example1n1" class="form-control form-control-lg text-uppercase pattern=[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}]"  required>
                         <small class="text-danger" *ngIf="f['pan_card'].touched && f['pan_card'].errors">
                           <div *ngIf="f['pan_card'].errors && f['pan_card'].errors['required']">Pan Card is required.</div>
                           <div *ngIf="f['pan_card'].errors && f['pan_card'].errors?.pattern">Pan Card Number is Invalid.</div>
