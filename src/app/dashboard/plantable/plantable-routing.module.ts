@@ -5,9 +5,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'planview',component:PlanTableComponent,canActivate:[AuthGuard]},
-  { path:'add-plan',component:AddPlanComponent,canActivate:[AuthGuard]},
-  { path:'add-plan/:id',component:AddPlanComponent,canActivate:[AuthGuard]}
+  { path:'planview',component:PlanTableComponent,canActivate:[AuthGuard],pathMatch:'full'},
+  { path:'add-plan',component:AddPlanComponent,canActivate:[AuthGuard],pathMatch:'full'},
+  { path:'edit/:id',component:AddPlanComponent,canActivate:[AuthGuard],pathMatch:'full'}
 
 ];
 

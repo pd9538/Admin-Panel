@@ -20,21 +20,23 @@
                   <th scope="col">Validity(days)</th>
                   <th scope="col">Charges</th>
                   <th scope="col">GST</th>
+                  <th scope="col">Discount</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="col-md-2 align-middle text-center" *ngFor="let plan of planTable">
-                  <td>{{plan.id}}</td>
-                  <td>{{plan.name}}</td>
-                  <td>{{plan.type}}</td>
-                  <td>{{plan.validity}}</td>
+                  <td>{{plan.plan_id}}</td>
+                  <td>{{plan.plan_name}}</td>
+                  <td>{{plan.plan_type}}</td>
+                  <td>{{plan.validity_days}}</td>
                   <td>{{plan.charges}}</td>
                   <td>{{plan.gst}}</td>
+                  <td>{{plan.discount}}</td>
+                  <td></td>
                   <td class="btn-group">
-                    <a type="button" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                    <a type="button" class="btn btn-success" [routerLink]="['/root/dashboard/plantable/add-plan/${plan.id}']"><i class="bi bi-pencil-square"></i></a>
-                    <a type="button" class="btn btn-danger"  (click)="delete(plan.id)"><i class="bi bi-trash"></i></a>
+                    <a type="button" class="btn btn-success" [routerLink]="['/root/dashboard/plantable/edit/',plan.plan_id]"><i class="bi bi-pencil-square"></i></a>
                   </td>
                 </tr>
               </tbody>
