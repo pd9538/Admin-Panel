@@ -9,26 +9,22 @@ import { Injectable } from "@angular/core";
 export class PlanService{
   private apiUrl="http://192.168.29.79/AddBrand";
 
-  planTable:Plan[]=[];
+
 
   constructor(private http:HttpClient){
-    this.planTable.push(new Plan(1,'ABC','Gold',320,1500,25));
-    this.planTable.push(new Plan(2,'ABC','Silver',480,500,15));
-    this.planTable.push(new Plan(3,'ABC','Platinum',120,1000,18));
+
   }
 
-  getPlanById(id:number){
-    return this.planTable.values[id];
-    // return this.http.get(`${this.apiUrl}/${id}`);
+  getPlanById(plan_id:number):Observable<Plan>{
+    return this.http.post<Plan>(this.apiUrl+'/editplan-id',{"plan_id":plan_id});
   }
 
   createPlan(plan:Plan){
-   return this.planTable.push(plan);
-    // return this.http.post(`${this.apiUrl}`,plan);
+     return this.http.post(this.apiUrl+'/addPlan',plan);
   }
 
-  updatePlan(value:any){
-    return this.http.put(`${this.apiUrl}`,value)
+  updatePlan(value:any):Observable<Plan>{
+    return this.http.post<Plan>(this.apiUrl+'/editPlan',value);
   }
 
   // deletePlan(id:number)Observable<any>{
@@ -36,8 +32,7 @@ export class PlanService{
   // }
 
   getPlanList(){
-    return this.planTable;
-    // return this.http.get(`${this.apiUrl}`);
+    return this.http.get(this.apiUrl+'/plan');
   }
 
 }

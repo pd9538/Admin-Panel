@@ -41,13 +41,13 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('isUserLoggedIn',this.isUserLoggedIn?"true":"false");
             localStorage.setItem('username',result[0].user_id);
             this.router.navigate(['root/dashboard']);
-            setInterval(()=>{
-              localStorage.removeItem('token');
-              this.isUserLoggedIn=false;
-              localStorage.removeItem('isUserLoggedIn');
-              localStorage.removeItem('username');
-              this.router.navigate(['auth/login']);
-            },90000)
+            // setInterval(()=>{
+            //   localStorage.removeItem('token');
+            //   this.isUserLoggedIn=false;
+            //   localStorage.removeItem('isUserLoggedIn');
+            //   localStorage.removeItem('username');
+            //   this.router.navigate(['auth/login']);
+            // })
           }
           else{
             Swal.fire("Please Enter Valid Credential",result.error,'error');

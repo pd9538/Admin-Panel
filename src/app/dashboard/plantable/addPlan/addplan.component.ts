@@ -3,7 +3,7 @@ import { NgbdModalContentComponent } from '../../../common/Modal/modal.component
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-addplan',
@@ -15,7 +15,12 @@ export class AddPlanComponent implements OnInit {
   submitted:boolean=false;
   editplanId:number;
   isEditMode:boolean=false;
-  planid:string;
+  event:any;
+  isAddMode:boolean;
+  checkbox_checked:boolean;
+  state:number;
+
+  fd=new FormData();
 
   get f(){ return this.planForm.controls; }
 
@@ -25,39 +30,39 @@ constructor(public router:Router,
             private planService:PlanService
     ){
       this.planForm=this.fb.group({
-        id:[{value:'',hidden:true}],
-        name:['',[Validators.required]],
-        type:['',[Validators.required]],
-        validity:['',[Validators.required]],
+        plan_id:[this.editplanId,{hidden:true}],
+        plan_name:['',[Validators.required]],
+        plan_type:['',[Validators.required]],
+        validity_days:['',[Validators.required]],
         charges:['',[Validators.required]],
         gst:['',[Validators.required]],
-        description:['',[Validators.required]]
+        description:['',[Validators.required]],
+        discount:['',[Validators.required]],
+        plan_status:[''],
+        first_time_applicable:['',[]]
       })
     }
     ngOnInit(): void {
       this.getPlan();
-      // this.planForm=new FormGroup({
-      //   'id':new FormControl({value:'',hidden:true}),
-      //   'name':new FormControl('',[Validators.required]),
-      //   'type':new FormControl('',[Validators.required]),
-      //   'validity':new FormControl('',[Validators.required]),
-      //   'charges':new FormControl('',[Validators.required]),
-      //   'gst':new FormControl('',[Validators.required]),
-      //   'description':new FormControl('',[Validators.required])
-      // })
+      this.isAddMode=!this.editplanId;
     }
 
     getPlan(){
       this.editplanId=this.activeRoute.snapshot.params.id;
         if(this.editplanId!=undefined){
           this.planService.getPlanById(this.editplanId).subscribe((plan:any)=>{
+            // console.log(plan);
             this.planForm.patchValue({
-              name:plan.data.name,
-              type:plan.data.type,
-              validity:plan.data.validity,
+              plan_name:plan.data.plan_name,
+              plan_type:plan.data.plan_type,
+              validity_days:plan.data.validity_days,
               charges:plan.data.charges,
               gst:plan.data.gst,
-              description:plan.data.description
+              description:plan.data.description,
+              discount:plan.data.discount,
+              first_time_applicable:plan.data.first_time_applicable,
+              plan_id:plan.data.plan_id,
+              plan_status:plan.data.plan_status
             })
           })
         }
@@ -65,18 +70,39 @@ constructor(public router:Router,
 
 
 
+
    savePlan(){
-      if(this.editplanId){
-        let data = this.planForm.value;
-        console.log(data);
-        this.planService.updatePlan(data);
+    this.editplanId=this.activeRoute.snapshot.params.id;
+      if(!this.isAddMode){
+        this.planService.updatePlan(this.planForm.value).subscribe((res:any)=>{
+          if(res.status==1){
+            Swal.fire(res.message,'','success');
+            this.router.navigate(['root/dashboard/plantable/planview']);
+          }
+        })
       }else{
         let planData=this.planForm.value;
-        this.planService.createPlan(planData);
-      this.planForm.reset();
-      this.router.navigate(['/root/dashboard/plantable/planview']);
+        // console.log(this.event);
+
+        this.planService.createPlan(planData).subscribe((data:any)=>{
+          if(data.message!='Invalid Parameters'){
+          console.log(data);
+          this.planForm.reset();
+          this.router.navigate(['/root/dashboard/plantable/planview']);
+          }
+        })
+
     }
   }
 
+  selected(event:any){
+    this.event=event.target.checked;
+    if(this.event){
+     return this.event=1;
+    }
+    else{
+     return this.event=0;
+    }
+  }
 
 }
