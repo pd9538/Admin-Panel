@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { PlanService } from './services/plan.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,13 +13,17 @@ export class PlanTableComponent implements OnInit{
   plans:Observable<Plan[]>;
 
   planTable:Plan[]=[];
+  planId:number;
+  planlist:any;
   showNew:boolean=false;
   planType:string[]=['Gold','Silver','Platinum'];
   planModel:Plan;
 
 
-
-  constructor(public router:Router,private planService:PlanService,private activeRoute:ActivatedRoute){
+  constructor(public router:Router,
+    private planService:PlanService,
+    private activeRoute:ActivatedRoute,
+    ){
 
   }
 
@@ -27,16 +32,12 @@ export class PlanTableComponent implements OnInit{
   }
 
   reloadData(){
-    this.planTable=this.planService.getPlanList();
+   this.planService.getPlanList().subscribe((result:any)=>{
+    this.planlist=result;
+    this.planTable=this.planlist.data;
+   })
   }
 
 
 
-  updatePlan(id:number){
-
-  }
-
-  delete=(id:number)=>{
-
-  }
 }

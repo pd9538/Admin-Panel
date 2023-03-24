@@ -11,28 +11,28 @@
           <input type="hidden" formControlName="id">
           <div class="row mb-3">
           <div class="col-md-6">
-            <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
-            <small class="text-danger" *ngIf="f['name'].touched && f['name'].invalid">
-              <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            <input type="text" placeholder="Name" formControlName="plan_name" class="form-control" required>
+            <small class="text-danger" *ngIf="f['plan_name'].touched && f['plan_name'].invalid">
+              <div *ngIf="f['plan_name'].errors && f['plan_name'].errors['required']">Name is required.</div>
             </small>
           </div>
           <div class="col-md-6 ms-auto">
-           <select id="type"  formControlName="type" class="form-control" onfocus="3" required>
+           <select id="type"  formControlName="plan_type" class="form-control" onfocus="3" required>
               <option value="" selected>Select Type</option>
               <option>Gold</option>
               <option>Silver</option>
               <option>Platinum</option>
           </select>
-          <small class="text-danger" *ngIf="f['type'].touched && f['type'].errors">
-            <div *ngIf="f['type'].errors && f['type'].errors['required']">Type is required.</div>
+          <small class="text-danger" *ngIf="f['plan_type'].touched && f['plan_type'].errors">
+            <div *ngIf="f['plan_type'].errors && f['plan_type'].errors['required']">Type is required.</div>
           </small>
         </div>
       </div>
           <div class="row mb-3">
             <div class="col-md-6">
-              <input type="number" placeholder="Validity(days)" formControlName="validity" class="form-control" required>
-              <small class="text-danger" *ngIf="f['validity'].touched && f['validity'].invalid">
-                <div *ngIf="f['validity'].errors && f['validity'].errors['required']">Validity is required.</div>
+              <input type="number" placeholder="Validity(days)" formControlName="validity_days" class="form-control" required>
+              <small class="text-danger" *ngIf="f['validity_days'].touched && f['validity_days'].invalid">
+                <div *ngIf="f['validity_days'].errors && f['validity_days'].errors['required']">Validity is required.</div>
               </small>
             </div>
             <div class="col-md-6 ms-auto">
@@ -42,23 +42,42 @@
               </small>
             </div>
           </div>
-          <div class="row mb-3">
+          <div class="row mb-3 ">
             <div class="col-md-6">
             <input type="number" placeholder="GST" formControlName="gst" class="form-control" required>
             <small class="text-danger" *ngIf="f['gst'].touched && f['gst'].invalid">
               <div *ngIf="f['gst'].errors && f['gst'].errors['required']">Gst is required.</div>
             </small>
           </div>
-            <div class="col-md-6 ms-auto">
+          <div class="col-md-6 ms-auto">
+            <input type="number" placeholder="Discount" formControlName="discount" class="form-control" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
             <textarea rows="3" placeholder="Description" formControlName="description" class="form-control" required></textarea>
             <small class="text-danger" *ngIf="f['description'].touched && f['description'].errors">
               <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is required.</div>
             </small>
           </div>
+          <div class="col-md-3 ms-auto">
+            <input type="checkbox"  formControlName="first_time_applicable" >
+            First Time is  applicable
+          </div>
+          <div class="col-md-3 ms-auto">
+            <select id="status"  formControlName="plan_status" class="form-control" onfocus="2" required>
+              <option value="" selected>Select Status</option>
+              <option>Active</option>
+              <option>Inactive</option>
+          </select>
+          </div>
+
         </div>
+
+
         <div class="col-md-6">
           <button class="btn btn-primary text-center text-white  float-end" type="submit"
-               [disabled]="!planForm.valid" >Save</button>
+               [disabled]="!planForm.valid">Save</button>
         </div>
         </form>
       </div>
