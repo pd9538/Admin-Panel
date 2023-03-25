@@ -5,6 +5,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { AddcustomerComponent } from './addcustomer/addcustomer.component';
 import { CustomerComponent } from './customer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerViewComponent } from './customer-view/customer-view.component';
 
 
 
@@ -13,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     CustomerComponent,
     AddcustomerComponent,
+    CustomerViewComponent,
     
     
   ],

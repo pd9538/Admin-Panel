@@ -16,85 +16,43 @@
         <tr>
           <th scope="col"> Id</th>
           <th scope="col">Customer Type</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Date Of Birth</th>
-          <th scope="col">Address</th>
-          <th scope="col">Village</th>
-          <th scope="col">Pin</th>
-          <th scope="col">City</th>
+          <th scope="col">Name</th>          
+          <th scope="col">Address</th>          
           <th scope="col">District</th>
-          <th scope="col">State</th> 
-          <th scope="col">Gender</th>         
-          <th scope="col">Mobile number</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Aadhar card</th>
-          <th scope="col">Pan Card </th>
-          <th scope="col">Status </th>
+          <th scope="col">State</th>
+          <th scope="col">Pincode</th>
+          <th scope="col">Mobile Number</th>
+          <th scope="col">E-mail</th> 
           <th scope="col">Plan</th>
+          <th scope="col">Status </th>
           <th scope="col">Refered ID</th>
           <th scope="col">Wallet Balance </th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="col-md-2 align-middle text-center">
-            <td>1</td>
-            <td>Customer</td>
-            <td>SURESH</td>
-            <td>SARGAD</td>
-            <td>23/10/1994</td>
-            <td>Jawkhede</td>
-            <td>khalasa</td>
-            <td>414505</td>
-            <td>pathardi</td>
-            <td>Ahmednagar</td>
-            <td>maharashtra</td>
-            <td>male</td>
-            <td>7219757219</td>
-            <td>suresh.pnsfottech@gmail.com</td>
-            <td>123145698745</td>
-            <td>SARGA2310D</td>
-            <td>Pending</td>
-            <td>Silver</td>
-            <td>1001</td>
-            <td> 25000 </td>
-
-            <td class="align-middle btn-group">
-                <a type="button" class="btn btn-primary" ><i class="bi bi-eye"></i></a>
-                <a type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-              <a type="button" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-              </td>
-        </tr>
-        <tr>
-          <td>2</td>
-            <td>Customer</td>
-            <td>SURESH</td>
-            <td>SARGAD</td>
-            <td>23/10/1994</td>
-            <td>Jawkhede</td>
-            <td>khalasa</td>
-            <td>414505</td>
-            <td>pathardi</td>
-            <td>Ahmednagar</td>
-            <td>maharashtra</td>
-            <td>male</td>
-            <td>7219757219</td>
-            <td>suresh.pnsfottech@gmail.com</td>
-            <td>123145698745</td>
-            <td>SARGA2310D</td>
-            <td>Pending</td>
-            <td>Silver</td>
-            <td>1001</td>
-            <td> 25000 </td>
-
-            <td class="align-middle btn-group">
-                <a type="button" class="btn btn-primary" ><i class="bi bi-eye"></i></a>
-                <a type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-              <a type="button" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-              </td>
+        <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable">
+          <td>{{cust.customer_id}}</td>
+          <td>{{cust.customer_type}}</td>
+          <td>{{cust.name}}</td>
+          <td>{{cust.address}}</td>
+          <td>{{cust.district}}</td>
+          <td>{{cust.state}}</td>
+          <td>{{cust.pincode}}</td>
+          <td>{{cust.mobile}}</td>
+          <td>{{cust.email}}</td>
+          <td>{{cust.plan_id}}</td> 
+          <td>{{cust.status}}</td>     
+          <td>{{cust.refered_by}}</td> 
+          <td>{{cust.wallet_balance}}</td>   
+          <td class="btn-group">
+            <a type="button" class="btn btn-primary" [routerLink]="['/root/dashboard/customer/customer-view',cust.customer_id]"><i class="bi bi-eye"></i></a>
+            <a type="button" class="btn btn-success" [routerLink]="['/root/dashboard/customer/edit-customer',cust.customer_id]"><i class="bi bi-pencil-square"></i></a>
+          </td>
         </tr>
     </tbody>
     </table>
   </div>
   </div>
+
+  <!-- Customer madhe customer-view component kara ho  -->
