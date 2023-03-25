@@ -1,8 +1,9 @@
+import { AddPlanComponent } from './addPlan/addplan.component';
 import { HttpClient } from '@angular/common/http';
 import { PlanService } from './services/plan.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Plan } from 'src/app/Model/plan';
 
 
@@ -11,14 +12,13 @@ import { Plan } from 'src/app/Model/plan';
 })
 export class PlanTableComponent implements OnInit{
   plans:Observable<Plan[]>;
-
   planTable:Plan[]=[];
   planId:number;
   planlist:any;
   showNew:boolean=false;
   planType:string[]=['Gold','Silver','Platinum'];
   planModel:Plan;
-
+  status:string;
 
   constructor(public router:Router,
     private planService:PlanService,
@@ -37,7 +37,5 @@ export class PlanTableComponent implements OnInit{
     this.planTable=this.planlist.data;
    })
   }
-
-
 
 }

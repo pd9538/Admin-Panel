@@ -44,7 +44,7 @@
           </div>
           <div class="row mb-3 ">
             <div class="col-md-6">
-            <input type="number" placeholder="GST" formControlName="gst" class="form-control" required>
+            <input type="number" placeholder="GST" formControlName="gst" class="form-control"  required>
             <small class="text-danger" *ngIf="f['gst'].touched && f['gst'].invalid">
               <div *ngIf="f['gst'].errors && f['gst'].errors['required']">Gst is required.</div>
             </small>
@@ -65,11 +65,9 @@
             First Time is  applicable
           </div>
           <div class="col-md-3 ms-auto">
-            <select id="status"  formControlName="plan_status" class="form-control" onfocus="2" required>
-              <option value="" selected>Select Status</option>
-              <option>Active</option>
-              <option>Inactive</option>
-          </select>
+            <label class="px-3">Status :</label>
+            <input type="radio" formControlName="status" value="Active" class="py-3">Active
+            <input type="radio" formControlName="status" value="Inactive">Inactive
           </div>
 
         </div>

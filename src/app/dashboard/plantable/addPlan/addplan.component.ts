@@ -19,6 +19,8 @@ export class AddPlanComponent implements OnInit {
   isAddMode:boolean;
   checkbox_checked:boolean;
   state:number;
+  status:string;
+  plan_type:string;
 
   fd=new FormData();
 
@@ -38,7 +40,7 @@ constructor(public router:Router,
         gst:['',[Validators.required]],
         description:['',[Validators.required]],
         discount:['',[Validators.required]],
-        plan_status:[''],
+        status:[''],
         first_time_applicable:['',[]]
       })
     }
@@ -51,10 +53,24 @@ constructor(public router:Router,
       this.editplanId=this.activeRoute.snapshot.params.id;
         if(this.editplanId!=undefined){
           this.planService.getPlanById(this.editplanId).subscribe((plan:any)=>{
-            // console.log(plan);
+            if(plan.data.status==1){
+              this.status="Active";
+            }
+            else{
+              this.status="Inactive";
+            }
+            if(plan.data.plan_type==0){
+              this.plan_type="Gold";
+            }
+            else if(plan.data.plan_type==1){
+              this.plan_type="Silver";
+            }
+            else{
+              this.plan_type="Platinum";
+            }
             this.planForm.patchValue({
               plan_name:plan.data.plan_name,
-              plan_type:plan.data.plan_type,
+              plan_type:this.plan_type,
               validity_days:plan.data.validity_days,
               charges:plan.data.charges,
               gst:plan.data.gst,
@@ -62,30 +78,26 @@ constructor(public router:Router,
               discount:plan.data.discount,
               first_time_applicable:plan.data.first_time_applicable,
               plan_id:plan.data.plan_id,
-              plan_status:plan.data.plan_status
+              status:this.status
             })
           })
         }
     }
-
-
-
 
    savePlan(){
     this.editplanId=this.activeRoute.snapshot.params.id;
       if(!this.isAddMode){
         this.planService.updatePlan(this.planForm.value).subscribe((res:any)=>{
           if(res.status==1){
+            console.log(res);
             Swal.fire(res.message,'','success');
             this.router.navigate(['root/dashboard/plantable/planview']);
           }
         })
       }else{
         let planData=this.planForm.value;
-        // console.log(this.event);
-
         this.planService.createPlan(planData).subscribe((data:any)=>{
-          if(data.message!='Invalid Parameters'){
+          if(data.message!='Invalid Parameters'&&data.status==1){
           console.log(data);
           this.planForm.reset();
           this.router.navigate(['/root/dashboard/plantable/planview']);
