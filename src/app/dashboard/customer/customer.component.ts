@@ -22,7 +22,5 @@ export class CustomerComponent implements OnInit{
             this.customerTable=this.customer.data;
         })
     }
-    delete=(id:number)=>{
-
-    }
+    
 }
