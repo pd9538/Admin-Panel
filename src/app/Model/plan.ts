@@ -8,9 +8,9 @@ export class Plan{
   description?:string;
   discount:string;
   first_time_applicable:number;
-  plan_status:boolean;
+ status:string;
 
-  constructor(plan_id:number,plan_name:string,plan_type:string,validity_days:number,charges:number,gst:number,discount:string,first_time_applicable:number,plan_status:boolean){
+  constructor(plan_id:number,plan_name:string,plan_type:string,validity_days:number,charges:number,gst:number,discount:string,first_time_applicable:number,status:string){
     this.plan_id=plan_id;
     this.plan_name=plan_name;
     this.plan_type=plan_type;
@@ -19,7 +19,7 @@ export class Plan{
     this.gst=gst;
     this.discount=discount;
     this.first_time_applicable=first_time_applicable;
-    this.plan_status=plan_status;
+    this.status=status;
   }
 }
 

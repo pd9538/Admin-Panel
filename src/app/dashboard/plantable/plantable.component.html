@@ -29,12 +29,12 @@
                 <tr class="col-md-2 align-middle text-center" *ngFor="let plan of planTable">
                   <td>{{plan.plan_id}}</td>
                   <td>{{plan.plan_name}}</td>
-                  <td>{{plan.plan_type}}</td>
+                  <td>{{plan.plan_type=="0"?"Gold":plan.plan_type=="1"?"Silver":"Platinum"}}</td>
                   <td>{{plan.validity_days}}</td>
                   <td>{{plan.charges}}</td>
                   <td>{{plan.gst}}</td>
                   <td>{{plan.discount}}</td>
-                  <td></td>
+                  <td>{{plan.status =="1"?"Active":"Inactive"}}</td>
                   <td class="btn-group">
                     <a type="button" class="btn btn-success" [routerLink]="['/root/dashboard/plantable/edit/',plan.plan_id]"><i class="bi bi-pencil-square"></i></a>
                   </td>
