@@ -19,6 +19,8 @@ export class PlanTableComponent implements OnInit{
   planType:string[]=['Gold','Silver','Platinum'];
   planModel:Plan;
   status:string;
+  searchString:string;
+
 
   constructor(public router:Router,
     private planService:PlanService,
@@ -31,11 +33,21 @@ export class PlanTableComponent implements OnInit{
     this.reloadData();
   }
 
+
   reloadData(){
    this.planService.getPlanList().subscribe((result:any)=>{
     this.planlist=result;
     this.planTable=this.planlist.data;
+    this.planTable.filter
    })
+  }
+
+
+
+
+
+  updatePlan(id:number){
+    this.router.navigate(['/root/dashboard/plantable/edit/',id])
   }
 
 }

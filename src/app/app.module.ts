@@ -8,18 +8,18 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-
   ],
   providers: [
     httpInterceptorProviders

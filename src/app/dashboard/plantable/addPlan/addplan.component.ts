@@ -59,14 +59,17 @@ constructor(public router:Router,
             else{
               this.status="Inactive";
             }
-            if(plan.data.plan_type==0){
+            if(plan.data.plan_type==1){
               this.plan_type="Gold";
             }
-            else if(plan.data.plan_type==1){
+            else if(plan.data.plan_type==2){
               this.plan_type="Silver";
             }
-            else{
+            else if(plan.data.plan_type==3){
               this.plan_type="Platinum";
+            }
+            else{
+              this.plan_type="";
             }
             this.planForm.patchValue({
               plan_name:plan.data.plan_name,

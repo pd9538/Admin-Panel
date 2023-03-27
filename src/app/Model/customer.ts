@@ -8,7 +8,7 @@ export class Customer{
   pincode:number;
   mobile:string;
   email:string;
-  status:boolean;
+  status:string;
   plan:string;
   referid:number;
   balance:number;
@@ -17,7 +17,7 @@ export class Customer{
   wallet_balance:number;
 
   constructor(customer_id:number,customer_type:string,name:string,address:string,district:string,
-    state:number,pincode:number,mobile:string,email:string,status:boolean,plan_id:number,refered_by:number,
+    state:number,pincode:number,mobile:string,email:string,status:string,plan_id:number,refered_by:number,
     wallet_balance:number){
     this.customer_id=customer_id;
     this.customer_type=customer_type;

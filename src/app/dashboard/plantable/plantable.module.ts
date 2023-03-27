@@ -1,3 +1,4 @@
+import { PlanFilterPipe } from './services/plan-filter.pipe';
 import { PlanTableComponent } from './plantable.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbdModalComponentModule } from 'src/app/common/Modal/modal.module';
@@ -14,6 +15,7 @@ import { AddPlanComponent } from './addPlan/addplan.component';
   declarations: [
     PlanTableComponent,
     AddPlanComponent,
+    PlanFilterPipe
   ],
   imports: [
     CommonModule,
