@@ -9,45 +9,35 @@
       </div>
     </div>
   </div>
-
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-9"></div>
-        <div class="col-md-3">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString">
-            <button class="btn btn-sm btn-light"><i class="bi bi-search"></i></button>
+    <div class="card gradient-dark-grey">
+    <div class="card-header">
+        <div class="card-title"> </div>
+          <div class="m-0">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString">
+              <button class="btn btn-sm btn-light"><i class="bi bi-search"></i></button>
+            </div>
           </div>
-        </div>
-      </div>
-      <hr>
-    <div class="table-responsive">
+    </div>
+    <div class="card-body">
+    <div>
           <table class="table custom-table">
               <thead class="text-center">
                 <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Validity(days)</th>
-                  <th scope="col">Charges</th>
-                  <th scope="col">GST</th>
-                  <th scope="col">Discount</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
+                  <th><span >Action</span></th>
+                  <th sortable="plan_id" (sort)="onSort($event)"><span >Id</span></th>
+                  <th sortable="plan_name" (sort)="onSort($event)"><span >Name</span></th>
+                  <th sortable="plan_type" (sort)="onSort($event)"><span >Type</span></th>
+                  <th sortable="validity_days" (sort)="onSort($event)"><span >Validity(days)</span></th>
+                  <th sortable="charges" (sort)="onSort($event)"><span >Charges</span></th>
+                  <th sortable="gst" (sort)="onSort($event)"><span >GST</span></th>
+                  <th sortable="discount" (sort)="onSort($event)"><span >Discount</span></th>
+                  <th sortable="status" (sort)="onSort($event)"><span >Status</span></th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="col-md-2 align-middle text-center" *ngFor="let plan of planTable | planFilter:searchString"
-                >
-                  <td>{{plan.plan_id}}</td>
-                  <td>{{plan.plan_name}}</td>
-                  <td>{{plan.plan_type=="1"?"Gold":plan.plan_type=="2"?"Silver":plan.plan_type=="3"?"Platinum":""}}</td>
-                  <td>{{plan.validity_days}}</td>
-                  <td>{{plan.charges}}</td>
-                  <td>{{plan.gst}}</td>
-                  <td>{{plan.discount}}</td>
-                  <td><span [ngClass]="{'badge rounded-pill bg-success':plan.status=='1','badge rounded-pill bg-danger':plan.status=='0','badge rounded-pill bg-warn':plan.status}">{{plan.status =="1"?"Active":"Inactive"}}</span></td>
-
+                <tr class="col-md-2 align-middle text-center" *ngFor="let plan of planTable | planFilter:searchString |
+                  paginate:{itemsPerPage:tableSize, currentPage:page, totalItems:count}; let i=index;">
                   <td class="text-center">
                     <div class="btn-group">
                       <button type="button" class="btn-sm btn-success" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,11 +50,27 @@
                       </ul>
                     </div>
                   </td>
+                  <td>{{plan.plan_id}}</td>
+                  <td>{{plan.plan_name}}</td>
+                  <td>{{plan.plan_type=="1"?"Gold":plan.plan_type=="2"?"Silver":plan.plan_type=="3"?"Platinum":""}}</td>
+                  <td>{{plan.validity_days}}</td>
+                  <td>{{plan.charges}}</td>
+                  <td>{{plan.gst}}</td>
+                  <td>{{plan.discount}}</td>
+                  <td><span [ngClass]="{'badge rounded-pill bg-success':plan.status=='1','badge rounded-pill bg-danger':plan.status=='0','badge rounded-pill bg-warn':plan.status}">
+                    {{plan.status =="1"?"Active":"Inactive"}}</span></td>
                 </tr>
               </tbody>
           </table>
         </div>
+        <nav aria-label="Page navigation" class="my-2">
+          <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)"></pagination-controls>
+        </nav>
       </div>
+    </div>
     </div>
 
 

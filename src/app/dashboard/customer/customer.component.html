@@ -1,37 +1,66 @@
-<div class="content-wrapper">
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6" >
-          <h1 class="m-5  text-primary">Customer <span><a routerLink="/root/dashboard/customer/add-customer" class="btn btn-sm btn-primary btn-rounded"><i class="bi bi-plus"></i> NEW</a></span>
-          </h1>
+<div class="content-wrapper pt-3">
+  <div class="card heading">
+
+      <div class="row">
+        <div class="col-sm-3" >
+          <h4 class="text-primary"><span>Customer</span></h4>
+        </div>
+        <div class="col-sm-3">
+          <a routerLink="/root/dashboard/customer/add-customer" class="btn btn-sm btn-primary btn-rounded" style="margin-top: -6px;"><i class="bi bi-plus"></i> NEW</a>
         </div>
       </div>
     </div>
-  </div>
+    <div class="card gradient-dark-grey">
+      <div class="card-header">
+        <div class="card-title"></div>
+        <div class="m-0">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString">
+            <button class="btn btn-sm btn-light"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+        </div>
+        <div class="card-body">
+          <div>
 
-  <div class="table-responsive">
-    <table class="table table-striped table-hover col-mb-2 table-bordered align-middle">
-      <thead class="align-middle text-center">
+
+    <table class="table custom-table">
+      <thead class="text-center">
         <tr>
-          <th scope="col"> Id</th>
-          <th scope="col">Customer Type</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col">District</th>
-          <th scope="col">State</th>
-          <th scope="col">Pincode</th>
-          <th scope="col">Mobile Number</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Plan Id</th>
-          <th scope="col">Status </th>
-          <th scope="col">Refered ID</th>
-          <th scope="col">Wallet Balance </th>
-          <th scope="col">Action</th>
+          <th><span title="sort this column">Action</span></th>
+          <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th>
+          <th sortable="customer_type" (sort)="onSort($event)"><span title="sort this column">Type</span></th>
+          <th sortable="name" (sort)="onSort($event)"><span title="sort this column">Name</span></th>
+          <th sortable="address" (sort)="onSort($event)"><span title="sort this column">Address</span></th>
+          <th sortable="district" (sort)="onSort($event)"><span title="sort this column">District</span></th>
+          <th sortable="state" (sort)="onSort($event)"><span title="sort this column">State</span></th>
+          <th sortable="pincode" (sort)="onSort($event)"><span title="sort this column">Pincode</span></th>
+          <th sortable="mobile" (sort)="onSort($event)"><span title="sort this column">Mobile Number</span></th>
+          <th sortable="email" (sort)="onSort($event)"><span title="sort this column">E-mail</span></th>
+          <th sortable="plan_id" (sort)="onSort($event)"><span title="sort this column">Plan Id</span></th>
+          <th sortable="wallet_balance" (sort)="onSort($event)"><span title="sort this column">Wallet Balance</span></th>
+          <th sortable="referid" (sort)="onSort($event)"><span title="sort this column">Refered ID</span></th>
+          <th sortable="status" (sort)="onSort($event)"><span title="sort this column">Status</span></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable">
+        <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable | filter:searchString | paginate:{
+          itemsPerPage:tableSize, currentPage:page, totalItems:count}; let i=index">
+          <td class="text-center">
+            <div class="btn-group">
+              <button type="button" class="btn-sm btn-success" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-list"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item py-2 text-center" (click)="updateCustomer(cust.customer_id)">
+                  <span class="btn-sm btn-primary btn-rounded d-block">EDIT</span>
+                </a></li>
+                <li><a class="dropdown-item py-2 text-center" (click)="customerView(cust.customer_id)">
+                  <span class="btn-sm btn-primary btn-rounded d-block">VIEW</span>
+                </a></li>
+              </ul>
+            </div>
+          </td>
           <td>{{cust.customer_id}}</td>
           <td>{{cust.customer_type=="1"?"Basic":cust.customer_type=="2"?"Prime":""}}</td>
           <td>{{cust.name}}</td>
@@ -42,17 +71,22 @@
           <td>{{cust.mobile}}</td>
           <td>{{cust.email}}</td>
           <td>{{cust.plan_id}}</td>
-          <td>{{cust.status=="1"?"Active":"Inactive"}}</td>
-          <td>{{cust.refered_by}}</td>
           <td>{{cust.wallet_balance}}</td>
-          <td class="btn-group">
-            <button type="button" class="btn btn-primary" (click)="customerView(cust.customer_id)"><i class="bi bi-eye"></i></button>
-            <button type="button" class="btn btn-success" (click)="updateCustomer(cust.customer_id)" ><i class="bi bi-pencil-square"></i></button>
-          </td>
+          <td>{{cust.referid}}</td>
+          <td><span [ngClass]="{'badge rounded-pill bg-success':cust.status=='1','badge rounded-pill bg-danger':cust.status=='0','badge rounded-pill bg-warn':cust.status}">
+            {{cust.status=="1"?"Active":"Inactive"}}</span></td>
         </tr>
     </tbody>
     </table>
-
   </div>
-  </div>
+  <nav aria-label="Page navigation" class="my-2">
 
+      <pagination-controls class="myPagination"
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)"></pagination-controls>
+
+  </nav>
+  </div>
+</div>
+</div>
