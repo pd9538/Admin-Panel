@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from "@angular/core";
 import { Customer } from "src/app/Model/customer";
 import { CustomerService } from "./services/customer.service";
@@ -9,8 +10,10 @@ import { CustomerService } from "./services/customer.service";
 export class CustomerComponent implements OnInit{
     customerTable:Customer[]=[];
     customer:any;
+    cust_type:string;
+    custData:any;
 
-    constructor(private custService:CustomerService){}
+    constructor(private custService:CustomerService,private router:Router){}
 
     ngOnInit(): void{
         this.reloadData();
@@ -22,5 +25,12 @@ export class CustomerComponent implements OnInit{
             this.customerTable=this.customer.data;
         })
     }
-    
+
+    updateCustomer(id:any){
+      this.router.navigate(['/root/dashboard/customer/edit-customer',id]);
+    }
+
+    customerView(id:any){
+      this.router.navigate(['/root/dashboard/customer/customer-view',id]);
+    }
 }

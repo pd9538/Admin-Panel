@@ -14,6 +14,7 @@ export class AddcustomerComponent implements OnInit {
   customerForm!:FormGroup;
   editCustId:number;
   isAddMode:boolean;
+  status:String;
 
  constructor(private custService:CustomerService, public router:Router, public activeRoute:ActivatedRoute){}
   get f(){ return this.customerForm.controls; }
@@ -25,6 +26,7 @@ export class AddcustomerComponent implements OnInit {
       this.customerForm=new FormGroup({
         'customer_id':new FormControl(this.editCustId),
         'name':new FormControl('',[Validators.required]),
+        'customer_type':new FormControl(''),
         // 'last_name':new FormControl('',[Validators.required]),
         // 'date_of_birth':new FormControl('',[Validators.required]),
         'address':new FormControl('',[Validators.required]),
@@ -38,6 +40,7 @@ export class AddcustomerComponent implements OnInit {
         // 'aadhar_card':new FormControl('',[Validators.required,Validators.pattern('^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$')]),
         // 'pan_card':new FormControl('',[Validators.required]),
         'plan_id':new FormControl('',[]),
+        'status':new FormControl('')
       })
     }
 
@@ -52,10 +55,15 @@ export class AddcustomerComponent implements OnInit {
 
   getCustomer(){
     this.editCustId=this.activeRoute.snapshot.params.id;
-    console.log(this.editCustId);
     if(this.editCustId!=undefined){
       this.custService.getCustById(this.editCustId).subscribe((customer:any)=>{
         console.log(customer);
+        if(customer.data.status==1){
+          this.status="Active";
+        }
+        else{
+          this.status="Inactive";
+        }
         this.customerForm.patchValue({
           customer_id:customer.data.customer_id,
          name:customer.data.name,
@@ -66,7 +74,8 @@ export class AddcustomerComponent implements OnInit {
           district:customer.data.district,
           state:customer.data.state,
           mobile:customer.data.mobile,
-          email:customer.data.email 
+          email:customer.data.email,
+          status:this.status
         })
       })
     }

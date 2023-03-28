@@ -12,7 +12,7 @@ export class CustomerViewComponent implements OnInit {
   custData:Customer[]=[];
   cust:any;
   custId:number;
-  
+
   customer_id:number;
   customer_type:string;
   name:string;
@@ -22,7 +22,7 @@ export class CustomerViewComponent implements OnInit {
   pincode:number;
   mobile:string;
   email:string;
-  status:boolean;
+  status:string;
   plan:string;
   referid:number;
   balance:number;
@@ -55,11 +55,11 @@ export class CustomerViewComponent implements OnInit {
           this. wallet_balance=this.custData[1].wallet_balance;
       })
       }
-      
-     
 
-    
-        
-    
-  
+
+
+
+
+
+
 }

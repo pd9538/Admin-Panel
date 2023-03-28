@@ -9,11 +9,11 @@
 </div>
 <div class="container-fluid mt-3">
     <div class="card" >
-        <div class="card-body">             
+        <div class="card-body">
             <div class="row" >
                 <div class="col-md-4">
                     <label  class=" form-label"for="">Customer Type : </label>
-                      {{customer_type}}
+                      {{customer_type=="1"?"Basic":customer_type=="2"?"Prime":""}}
                 </div>
                 <div class="col-md-4">
                     <label class="form-label" for="">Name :</label>
@@ -50,7 +50,7 @@
                       {{email}}
                 </div>
                 <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">Plan :</label>
+                    <label class="form-label" for="">Plan Id :</label>
                       {{plan_id}}
                 </div>
             </div>
@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-md-4 mt-4">
                     <label class="form-label" for="">Status :</label>
-                      {{status}}
+                      {{status=="1"?"Active":"Inactive"}}
                 </div>
                 <div class="col-md-4 mt-4">
                     <label class="form-label" for="">Refered ID :</label>
@@ -70,12 +70,8 @@
                 </div>
             </div>
             <hr>
-           
+
         </div>
     </div>
 </div>
 
-
-
-<!-- data filed chiya samor pahije not downline -->
-<!-- tya sathi class fakt change kara yeun jail ok  -->

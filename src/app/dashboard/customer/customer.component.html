@@ -16,14 +16,14 @@
         <tr>
           <th scope="col"> Id</th>
           <th scope="col">Customer Type</th>
-          <th scope="col">Name</th>          
-          <th scope="col">Address</th>          
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
           <th scope="col">District</th>
           <th scope="col">State</th>
           <th scope="col">Pincode</th>
           <th scope="col">Mobile Number</th>
-          <th scope="col">E-mail</th> 
-          <th scope="col">Plan</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Plan Id</th>
           <th scope="col">Status </th>
           <th scope="col">Refered ID</th>
           <th scope="col">Wallet Balance </th>
@@ -33,7 +33,7 @@
       <tbody>
         <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable">
           <td>{{cust.customer_id}}</td>
-          <td>{{cust.customer_type}}</td>
+          <td>{{cust.customer_type=="1"?"Basic":cust.customer_type=="2"?"Prime":""}}</td>
           <td>{{cust.name}}</td>
           <td>{{cust.address}}</td>
           <td>{{cust.district}}</td>
@@ -41,18 +41,18 @@
           <td>{{cust.pincode}}</td>
           <td>{{cust.mobile}}</td>
           <td>{{cust.email}}</td>
-          <td>{{cust.plan_id}}</td> 
-          <td>{{cust.status}}</td>     
-          <td>{{cust.refered_by}}</td> 
-          <td>{{cust.wallet_balance}}</td>   
+          <td>{{cust.plan_id}}</td>
+          <td>{{cust.status=="1"?"Active":"Inactive"}}</td>
+          <td>{{cust.refered_by}}</td>
+          <td>{{cust.wallet_balance}}</td>
           <td class="btn-group">
-            <a type="button" class="btn btn-primary" [routerLink]="['/root/dashboard/customer/customer-view',cust.customer_id]"><i class="bi bi-eye"></i></a>
-            <a type="button" class="btn btn-success" [routerLink]="['/root/dashboard/customer/edit-customer',cust.customer_id]"><i class="bi bi-pencil-square"></i></a>
+            <button type="button" class="btn btn-primary" (click)="customerView(cust.customer_id)"><i class="bi bi-eye"></i></button>
+            <button type="button" class="btn btn-success" (click)="updateCustomer(cust.customer_id)" ><i class="bi bi-pencil-square"></i></button>
           </td>
         </tr>
     </tbody>
     </table>
+
   </div>
   </div>
 
-  <!-- Customer madhe customer-view component kara ho  -->
