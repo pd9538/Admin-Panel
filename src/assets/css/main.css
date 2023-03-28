@@ -961,7 +961,7 @@ img{
 .content-wrapper{
     padding:0 14px 0 14px;
     height:calc(100vh - 150px);
-    overflow:auto;
+    /* overflow:auto; */
 }
 @media (max-width:576px){
     .content-wrapper{
@@ -4869,7 +4869,7 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 }
 .table{
     color:#242424;
-    font-size:.85rem;
+    font-size:1.00rem;
 }
 .table .flag-img{
     width:18px;
@@ -4884,6 +4884,7 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .table>thead td,.table>thead th{
     font-weight:bold;
     font-size:.925rem;
+    cursor: pointer;
 }
 .table.v-middle{
     vertical-align:middle;
@@ -5153,4 +5154,8 @@ input::-webkit-outer-spin-button{
   border-radius: 8px;
   position: relative;
   /* margin-bottom: 24px; */
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #0f59c9;
 }

@@ -1,3 +1,4 @@
+
 export class Plan{
   plan_id:number;
   plan_name:string;
@@ -10,7 +11,8 @@ export class Plan{
   first_time_applicable:number;
  status:string;
 
-  constructor(plan_id:number,plan_name:string,plan_type:string,validity_days:number,charges:number,gst:number,discount:string,first_time_applicable:number,status:string){
+  constructor(plan_id:number,plan_name:string,plan_type:string,validity_days:number,charges:number,gst:number,
+    discount:string,first_time_applicable:number,status:string){
     this.plan_id=plan_id;
     this.plan_name=plan_name;
     this.plan_type=plan_type;

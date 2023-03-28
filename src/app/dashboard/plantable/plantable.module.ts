@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { PlanFilterPipe } from './services/plan-filter.pipe';
 import { PlanTableComponent } from './plantable.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 import { PlantableRoutingModule } from './plantable-routing.module';
 import { AddPlanComponent } from './addPlan/addplan.component';
+import { PlanSortableHeaderDirective } from './services/plansortable-header.directive';
 
 
 
@@ -15,14 +17,16 @@ import { AddPlanComponent } from './addPlan/addplan.component';
   declarations: [
     PlanTableComponent,
     AddPlanComponent,
-    PlanFilterPipe
+    PlanFilterPipe,
+    PlanSortableHeaderDirective
   ],
   imports: [
     CommonModule,
     PlantableRoutingModule,
     NgbdModalComponentModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class PlantableModule { }
