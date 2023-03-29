@@ -3994,6 +3994,7 @@ button:focus:not(:focus-visible){
     color:#ffffff;
     background:#0f59c9;
     border:1px solid #0f59c9;
+    cursor: pointer;
 }
 .btn-primary:hover{
     color:#ffffff;
@@ -4979,10 +4980,14 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .page-item .page-link{
     padding:.594rem 1.25rem;
     font-size:.9rem;
+    cursor: pointer;
 }
 .page-item .page-link:focus{
     -webkit-box-shadow:none;
     box-shadow:none;
+}
+.page-item .page-link.active:hover{
+  background-color: #0d6efd;
 }
 .page-item:first-child .page-link{
     border-top-left-radius:20px;
@@ -5156,6 +5161,5 @@ input::-webkit-outer-spin-button{
   /* margin-bottom: 24px; */
 }
 
-.my-pagination ::ng-deep .ngx-pagination .current {
-  background: #0f59c9;
-}
+
+

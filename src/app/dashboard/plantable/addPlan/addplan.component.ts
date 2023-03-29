@@ -92,7 +92,6 @@ constructor(public router:Router,
       if(!this.isAddMode){
         this.planService.updatePlan(this.planForm.value).subscribe((res:any)=>{
           if(res.status==1){
-            console.log(res);
             Swal.fire(res.message,'','success');
             this.router.navigate(['root/dashboard/plantable/planview']);
           }
@@ -100,8 +99,8 @@ constructor(public router:Router,
       }else{
         let planData=this.planForm.value;
         this.planService.createPlan(planData).subscribe((data:any)=>{
-          if(data.message!='Invalid Parameters'&&data.status==1){
-          console.log(data);
+          if(data.message!='Invalid Parameters'&& data.status==1){
+          Swal.fire(data.message,'','success');
           this.planForm.reset();
           this.router.navigate(['/root/dashboard/plantable/planview']);
           }

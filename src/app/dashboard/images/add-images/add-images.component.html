@@ -58,10 +58,8 @@
         </small>
       </div>
       <div class="col-md-6 ms-auto">
-
         <input class="form-control" placeholder="Date (yyyy-mm-dd)" formControlName="date" type="text"
-        onfocus="(this.type='date')"
-        >
+        onfocus="(this.type='date')">
       </div>
       <small class="text-danger invalid-feedback" *ngIf="f['date'].touched && f['date'].errors">
         <div *ngIf="f['date'].errors && f['date'].errors['required']">Date is required.</div>
@@ -78,7 +76,7 @@
     </div>
       <div class="col-md-6">
         <button class="btn btn-primary text-center text-white  float-end" type="submit"
-             [disabled]="!imageForm.valid" >Save</button>
+             [disabled]="!imageForm.valid">Save</button>
       </div>
       </form>
     </div>
