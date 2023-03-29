@@ -20,6 +20,14 @@ export class CustomerComponent implements OnInit{
     tableSize:number=7;
     tableSizes:any=[3,6,9,12];
 
+    config={
+      id:'custom',
+      itemsPerPage:7,
+      currentPage:1,
+      totalItems:0
+    }
+
+
     data:Array<Customer>=this.customerTable;
     @ViewChildren(CustSortableHeaderDirective) headers:QueryList<CustSortableHeaderDirective>;
 

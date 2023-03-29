@@ -1,77 +1,76 @@
 <div class="container-fluid mt-3">
-    <div class="card">
-        <div class="card-body">
-            <div class="row mb-2">
-                <h4 class="font-weight-bold text-primary m-0 ">View Customer Information</h4>
-            </div>
-        </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row mb-2">
+        <h4 class="font-weight-bold text-primary m-0 ">View Customer Information</h4>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container-fluid mt-3">
-    <div class="card" >
-        <div class="card-body">
-            <div class="row" >
-                <div class="col-md-4">
-                    <label  class=" form-label"for="">Customer Type : </label>
-                      {{customer_type=="1"?"Basic":customer_type=="2"?"Prime":""}}
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label" for="">Name :</label>
-                      {{name}}
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label" for="">Address :</label>
-                      {{address}}
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">District :</label>
-                      {{district}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <label class="form-label">State :</label>
-                      {{state}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <label class="form-label">Pincode :</label>
-                      {{pincode}}
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">Mobile Number :</label>
-                      {{mobile}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">E-mail :</label>
-                      {{email}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">Plan Id :</label>
-                      {{plan_id}}
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">Status :</label>
-                      {{status=="1"?"Active":"Inactive"}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">Refered ID :</label>
-                      {{referid}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <label class="form-label" for="">Wallet Balance :</label>
-                      {{wallet_balance}}
-                </div>
-            </div>
-            <hr>
-
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <label class=" form-label" for="">Customer Type : </label>
+          {{customer_type=="1"?"Basic":customer_type=="2"?"Prime":""}}
         </div>
-    </div>
-</div>
+        <div class="col-md-4">
+          <label class="form-label" for="">Name :</label>
+          {{name}}
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="">Address :</label>
+          {{address}}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">District :</label>
+          {{district}}
+        </div>
+        <div class="col-md-4 mt-4">
+          <label class="form-label">State :</label>
+          {{state}}
+        </div>
+        <div class="col-md-4 mt-4">
+          <label class="form-label">Pincode :</label>
+          {{pincode}}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">Mobile Number :</label>
+          {{mobile}}
+        </div>
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">E-mail :</label>
+          {{email}}
+        </div>
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">Plan Id :</label>
+          {{plan_id}}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">Status :</label>
+          {{status=="1"?"Active":"Inactive"}}
+        </div>
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">Refered ID :</label>
+          {{referid}}
+        </div>
+        <div class="col-md-4 mt-4">
+          <label class="form-label" for="">Wallet Balance :</label>
+          {{wallet_balance}}
+        </div>
+      </div>
+      <hr>
 
+    </div>
+  </div>
+</div>

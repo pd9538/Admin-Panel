@@ -1,92 +1,102 @@
 <div class="content-wrapper pt-3">
   <div class="card heading">
-
-      <div class="row">
-        <div class="col-sm-3" >
-          <h4 class="text-primary"><span>Customer</span></h4>
-        </div>
-        <div class="col-sm-3">
-          <a routerLink="/root/dashboard/customer/add-customer" class="btn btn-sm btn-primary btn-rounded" style="margin-top: -6px;"><i class="bi bi-plus"></i> NEW</a>
+    <div class="row">
+      <div class="col-sm-3">
+        <h4 class="text-primary"><span>Customer</span></h4>
+      </div>
+      <div class="col-sm-3">
+        <a routerLink="/root/dashboard/customer/add-customer" class="btn btn-sm btn-primary btn-rounded"
+          style="margin-top: -6px;"><i class="bi bi-plus"></i> NEW</a>
+      </div>
+    </div>
+  </div>
+  <div class="card gradient-dark-grey">
+    <div class="card-header">
+      <div class="card-title"></div>
+      <div class="m-0">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString">
+          <button class="btn btn-sm btn-light"><i class="bi bi-search"></i></button>
         </div>
       </div>
     </div>
-    <div class="card gradient-dark-grey">
-      <div class="card-header">
-        <div class="card-title"></div>
-        <div class="m-0">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString">
-            <button class="btn btn-sm btn-light"><i class="bi bi-search"></i></button>
-          </div>
-        </div>
-        </div>
-        <div class="card-body">
-          <div>
-
-
-    <table class="table custom-table">
-      <thead class="text-center">
-        <tr>
-          <th><span title="sort this column">Action</span></th>
-          <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th>
-          <th sortable="customer_type" (sort)="onSort($event)"><span title="sort this column">Type</span></th>
-          <th sortable="name" (sort)="onSort($event)"><span title="sort this column">Name</span></th>
-          <th sortable="address" (sort)="onSort($event)"><span title="sort this column">Address</span></th>
-          <th sortable="district" (sort)="onSort($event)"><span title="sort this column">District</span></th>
-          <th sortable="state" (sort)="onSort($event)"><span title="sort this column">State</span></th>
-          <th sortable="pincode" (sort)="onSort($event)"><span title="sort this column">Pincode</span></th>
-          <th sortable="mobile" (sort)="onSort($event)"><span title="sort this column">Mobile Number</span></th>
-          <th sortable="email" (sort)="onSort($event)"><span title="sort this column">E-mail</span></th>
-          <th sortable="plan_id" (sort)="onSort($event)"><span title="sort this column">Plan Id</span></th>
-          <th sortable="wallet_balance" (sort)="onSort($event)"><span title="sort this column">Wallet Balance</span></th>
-          <th sortable="referid" (sort)="onSort($event)"><span title="sort this column">Refered ID</span></th>
-          <th sortable="status" (sort)="onSort($event)"><span title="sort this column">Status</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable | filter:searchString | paginate:{
+    <div class="card-body">
+      <div>
+        <table class="table custom-table">
+          <thead class="text-center">
+            <tr>
+              <th><span title="sort this column">Action</span></th>
+              <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th>
+              <th sortable="customer_type" (sort)="onSort($event)"><span title="sort this column">Type</span></th>
+              <th sortable="name" (sort)="onSort($event)"><span title="sort this column">Name</span></th>
+              <th sortable="address" (sort)="onSort($event)"><span title="sort this column">Address</span></th>
+              <th sortable="district" (sort)="onSort($event)"><span title="sort this column">District</span></th>
+              <th sortable="state" (sort)="onSort($event)"><span title="sort this column">State</span></th>
+              <th sortable="pincode" (sort)="onSort($event)"><span title="sort this column">Pincode</span></th>
+              <th sortable="mobile" (sort)="onSort($event)"><span title="sort this column">Mobile Number</span></th>
+              <th sortable="email" (sort)="onSort($event)"><span title="sort this column">E-mail</span></th>
+              <th sortable="plan_id" (sort)="onSort($event)"><span title="sort this column">Plan Id</span></th>
+              <th sortable="wallet_balance" (sort)="onSort($event)"><span title="sort this column">Wallet Balance</span>
+              </th>
+              <th sortable="referid" (sort)="onSort($event)"><span title="sort this column">Refered ID</span></th>
+              <th sortable="status" (sort)="onSort($event)"><span title="sort this column">Status</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable | filter:searchString | paginate:{
           itemsPerPage:tableSize, currentPage:page, totalItems:count}; let i=index">
-          <td class="text-center">
-            <div class="btn-group">
-              <button type="button" class="btn-sm btn-success" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-list"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item py-2 text-center" (click)="updateCustomer(cust.customer_id)">
-                  <span class="btn-sm btn-primary btn-rounded d-block">EDIT</span>
-                </a></li>
-                <li><a class="dropdown-item py-2 text-center" (click)="customerView(cust.customer_id)">
-                  <span class="btn-sm btn-primary btn-rounded d-block">VIEW</span>
-                </a></li>
-              </ul>
-            </div>
-          </td>
-          <td>{{cust.customer_id}}</td>
-          <td>{{cust.customer_type=="1"?"Basic":cust.customer_type=="2"?"Prime":""}}</td>
-          <td>{{cust.name}}</td>
-          <td>{{cust.address}}</td>
-          <td>{{cust.district}}</td>
-          <td>{{cust.state}}</td>
-          <td>{{cust.pincode}}</td>
-          <td>{{cust.mobile}}</td>
-          <td>{{cust.email}}</td>
-          <td>{{cust.plan_id}}</td>
-          <td>{{cust.wallet_balance}}</td>
-          <td>{{cust.referid}}</td>
-          <td><span [ngClass]="{'badge rounded-pill bg-success':cust.status=='1','badge rounded-pill bg-danger':cust.status=='0','badge rounded-pill bg-warn':cust.status}">
-            {{cust.status=="1"?"Active":"Inactive"}}</span></td>
-        </tr>
-    </tbody>
-    </table>
-  </div>
-  <nav aria-label="Page navigation" class="my-2">
+              <td class="text-center">
+                <div class="btn-group">
+                  <button type="button" class="btn-sm btn-success" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item py-2 text-center" (click)="updateCustomer(cust.customer_id)">
+                        <span class="btn-sm btn-primary btn-rounded d-block">EDIT</span>
+                      </a></li>
+                    <li><a class="dropdown-item py-2 text-center" (click)="customerView(cust.customer_id)">
+                        <span class="btn-sm btn-primary btn-rounded d-block">VIEW</span>
+                      </a></li>
+                  </ul>
+                </div>
+              </td>
+              <td>{{cust.customer_id}}</td>
+              <td>{{cust.customer_type=="1"?"Basic":cust.customer_type=="2"?"Prime":""}}</td>
+              <td>{{cust.name}}</td>
+              <td>{{cust.address}}</td>
+              <td>{{cust.district}}</td>
+              <td>{{cust.state}}</td>
+              <td>{{cust.pincode}}</td>
+              <td>{{cust.mobile}}</td>
+              <td>{{cust.email}}</td>
+              <td>{{cust.plan_id}}</td>
+              <td>{{cust.wallet_balance}}</td>
+              <td>{{cust.referid}}</td>
+              <td><span
+                  [ngClass]="{'badge rounded-pill bg-success':cust.status=='1','badge rounded-pill bg-danger':cust.status=='0','badge rounded-pill bg-warn':cust.status}">
+                  {{cust.status=="1"?"Active":"Inactive"}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      <pagination-controls class="myPagination"
-        previousLabel="Prev"
-        nextLabel="Next"
-        (pageChange)="onTableDataChange($event)"></pagination-controls>
+      <pagination-template #p="paginationApi" (pageChange)="onTableDataChange($event)">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item" [class.disabled]="p.isFirstPage()">
+              <a class="page-link" *ngIf="!p.isFirstPage()" (click)="p.previous()">Previous</a>
+            </li>
+            <li class="page-item" *ngFor="let page of p.pages" [class.current]="p.getCurrent()===page.value">
+              <a [ngClass]="p.getCurrent()===page.value?'page-link active':'page-link'"
+                (click)="p.setCurrent(page.value)">{{page.label}}</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" *ngIf="!p.isLastPage()" (click)="p.next()">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </pagination-template>
 
-  </nav>
+    </div>
   </div>
-</div>
 </div>

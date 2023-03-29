@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,34 +15,34 @@ export class AddcustomerComponent implements OnInit {
   editCustId:number;
   isAddMode:boolean;
   status:String;
+  type:string;
 
- constructor(private custService:CustomerService, public router:Router, public activeRoute:ActivatedRoute){}
+ constructor(private custService:CustomerService,
+             public router:Router,
+             public activeRoute:ActivatedRoute,
+             private fb:FormBuilder
+      ){
+          this.customerForm=this.fb.group({
+            customer_id:[this.editCustId,{hidden:true}],
+            name:['',[Validators.required]],
+            customer_type:[''],
+            address:['',[Validators.required]],
+            pincode:['',[Validators.required,Validators.pattern('[1-9]{1}[0-9]{5}|[1-9]{1}[0-9]{6}')]],
+            district:['',[Validators.required]],
+            state:['',[Validators.required]],
+            mobile:['',[Validators.required,Validators.pattern("^([0-9]{10})$")]],
+            email:['',[Validators.required,Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]],
+            plan_id:['',[]],
+            status:['',[]]
+          })
+
+ }
   get f(){ return this.customerForm.controls; }
 
   ngOnInit(): void {
     this.getCustomer();
     this.isAddMode=!this.editCustId;
-
-      this.customerForm=new FormGroup({
-        'customer_id':new FormControl(this.editCustId),
-        'name':new FormControl('',[Validators.required]),
-        'customer_type':new FormControl(''),
-        // 'last_name':new FormControl('',[Validators.required]),
-        // 'date_of_birth':new FormControl('',[Validators.required]),
-        'address':new FormControl('',[Validators.required]),
-        // 'village':new FormControl('',[Validators.required]),
-        'pincode':new FormControl('',[Validators.required,Validators.pattern('[1-9]{1}[0-9]{5}|[1-9]{1}[0-9]{6}')]),
-        // 'city':new FormControl('',[Validators.required]),
-        'district':new FormControl('',[Validators.required]),
-        'state':new FormControl('',[Validators.required]),
-        'mobile':new FormControl('',[Validators.required,Validators.pattern("^([0-9]{10})$")]),
-        'email':new FormControl('',[Validators.required,Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]),
-        // 'aadhar_card':new FormControl('',[Validators.required,Validators.pattern('^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$')]),
-        // 'pan_card':new FormControl('',[Validators.required]),
-        'plan_id':new FormControl('',[]),
-        'status':new FormControl('')
-      })
-    }
+  }
 
      onlynumbersallowed (event):boolean{
       event = (event) ? event : window.event;
@@ -57,17 +57,26 @@ export class AddcustomerComponent implements OnInit {
     this.editCustId=this.activeRoute.snapshot.params.id;
     if(this.editCustId!=undefined){
       this.custService.getCustById(this.editCustId).subscribe((customer:any)=>{
-        console.log(customer);
         if(customer.data.status==1){
           this.status="Active";
         }
         else{
           this.status="Inactive";
         }
-        this.customerForm.patchValue({
+
+        if(customer.data.customer_type==1){
+          this.type="Basic";
+        }
+        else if(customer.data.customer_type==2){
+          this.type="Prime";
+        }
+        else{
+          this.type="";
+        }
+          this.customerForm.patchValue({
           customer_id:customer.data.customer_id,
-         name:customer.data.name,
-          customer_type:customer.data.type,
+          name:customer.data.name,
+          customer_type:this.type,
           plan_id:customer.data.plan_id,
           address:customer.data.address,
           pincode:customer.data.pincode,
@@ -83,7 +92,6 @@ export class AddcustomerComponent implements OnInit {
 
   saveCustomer(){
       let formData=this.customerForm.value;
-      console.log(formData);
       if(!this.isAddMode){
         this.custService.updateCustomer(this.customerForm.value).subscribe((data:any)=>{
           if(data.status==1){

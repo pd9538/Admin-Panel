@@ -1,107 +1,162 @@
-<div class="container mt-5 pt-5">
-  <div class="row">
-<div class="col-md-12">
-  <div class="card">
-    <div class="card-header">
-      <h3>Customer Details</h3>
+<div class="content-wrapper pt-3">
+  <div class="card heading">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4 class="text-primary"><span>Customer Details</span></h4>
+      </div>
     </div>
+  </div>
+  <div class="content-wrapper-scroll">
     <div class="card-body">
-      <p class="font-weight-bold text-primary  m-0">Personal Information</p>
-<form  [formGroup]="customerForm" (ngSubmit)="saveCustomer()" method="post" form="ngForm">
-  <input type="hidden" formControlName="id">
-  <div class="row mb-3">
-  <div class="col-md-6">
-    <label class="form-label" for="name">Name <span class="text-danger"> *</span></label>
-    <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
-    <small class="text-danger" *ngIf="f['name'].touched && f['name'].invalid">
-      <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
-    </small>
-  </div>
-  <div class="col-md-6 ms-auto">
-    <label class="form-label" for="cust_type">Customer Type <span class="text-danger">*</span></label>
-    <select id="type"  formControlName="customer_type" class="form-control" onfocus="2" required>
-      <option value="" selected>Select Type</option>
-      <option>Basic</option>
-      <option>Prime</option>
-  </select>
-  <small class="text-danger" *ngIf="f['customer_type'].touched && f['customer_type'].errors">
-    <div *ngIf="f['customer_type'].errors && f['customer_type'].errors['required']">Type is required.</div>
-  </small>
-  </div>
-</div>
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <label class="form-label" for="address">Address<span class="text-danger">*</span></label>
-      <input type="text" placeholder="Address" formControlName="address" class="form-control" required>
-      <small class="text-danger" *ngIf="f['address'].touched && f['address'].invalid">
-        <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required.</div>
-      </small>
-    </div>
-    <div class="col-md-6 ms-auto">
-      <label class="form-label" for="district">District <span class="text-danger">*</span></label>
-      <input type="text" placeholder="District" formControlName="district" class="form-control" required>
-      <small class="text-danger" *ngIf="f['district'].touched && f['district'].invalid">
-        <div *ngIf="f['district'].errors && f['district'].errors['required']">District is required.</div>
-      </small>
-    </div>
-  </div>
-  <div class="row mb-3 ">
-    <div class="col-md-6">
-      <label class="form-label" for="state">State <span class="text-danger">*</span></label>
-    <input type="text" placeholder="State" formControlName="state" class="form-control" required>
-    <small class="text-danger" *ngIf="f['state'].touched && f['state'].invalid">
-      <div *ngIf="f['state'].errors && f['state'].errors['required']">State is required.</div>
-    </small>
-  </div>
-  <div class="col-md-6 ms-auto">
-    <label class="form-label" for="pincode">Pin code <span class="text-danger">*</span></label>
-    <input (keypress)="onlynumbersallowed($event)" type="text" placeholder="Pincode" formControlName="pincode" class="form-control" required [maxLength]="6">
-    <small class="text-danger" *ngIf="f['pincode'].touched && f['pincode'].invalid">
-      <div *ngIf="f['pincode'].errors && f['pincode'].errors['required']">Pincode is required.</div>
-      <div *ngIf="f['pincode'].errors && f['pincode'].errors?.pattern">Pin is not Valid</div>
-    </small>
-  </div>
-</div>
-<div class="row mb-3">
-  <div class="col-md-6 ms-auto" >
-    <label class="form-label" for="mobile">Mobile Nmber <span class="text-danger">*</span></label>
-   <input (keypress)="onlynumbersallowed($event)"type="text" placeholder="Mobile Number" formControlName="mobile" class="form-control" required [maxLength]="10">
-   <small class="text-danger" *ngIf="f['mobile'].touched && f['mobile'].invalid">
-    <div *ngIf="f['mobile'].errors && f['mobile'].errors['required']">Mobile Number is required.</div>
-    <div *ngIf="f['mobile'].errors && f['mobile'].errors?.pattern">Mobile Number is Invalid.</div>
-  </small>
-  </div>
-  <div class="col-md-6 ms-auto" >
-    <label class="form-label" for="email">Email Id <span class="text-danger">*</span></label>
-    <input type="text" placeholder="Email-id" formControlName="email" class="form-control" required>
-    <small class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
-      <div *ngIf="f['email'].errors && f['email'].errors['required']">Email-id is required.</div>
-    </small>
-   </div>
-</div>
-<div class="row mb-3">
-  <div class="col-md-6">
-    <label class="form-label" for="plan_id">Plan Id <span class="text-danger">*</span></label>
-    <input type="text" placeholder="Plan_id" formControlName="plan_id" class="form-control" required>
-    <small class="text-danger" *ngIf="f['plan_id'].touched  && f['plan_id'].invalid">
-      <div *ngIf="f['plan_id'].errors && f['plan_id'].errors['required']"> Plan id is requried</div>
-    </small>
-  </div>
-  <div class="col-md-6 ms-auto">
-    <label class="form-label px-3" for="status">Status <span class="text-danger">*</span></label><br>
-    <input type="radio" formControlName="status" value="Active" class="px-5">Active
-    <input type="radio" formControlName="status" value="Inactive">Inactive
-  </div>
-</div>
+      <div>
+        <form [formGroup]="customerForm" (ngSubmit)="saveCustomer()" method="post" form="ngForm">
+          <input type="hidden" formControlName="id">
+          <div class="row">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Name <span class="text-danger"> *</span></label>
+                    <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['name'].touched && f['name'].invalid">
+                      <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="cust_type">Customer Type <span class="text-danger">*</span></label>
+                    <select id="type" formControlName="customer_type" class="form-control" onfocus="2" required>
+                      <option value="" selected>Select Type</option>
+                      <option>Basic</option>
+                      <option>Prime</option>
+                    </select>
+                    <small class="text-danger" *ngIf="f['customer_type'].touched && f['customer_type'].errors">
+                      <div *ngIf="f['customer_type'].errors && f['customer_type'].errors['required']">Type is required.
+                      </div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="address">Address<span class="text-danger">*</span></label>
+                    <input type="text" placeholder="Address" formControlName="address" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['address'].touched && f['address'].invalid">
+                      <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="district">District <span class="text-danger">*</span></label>
+                    <input type="text" placeholder="District" formControlName="district" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['district'].touched && f['district'].invalid">
+                      <div *ngIf="f['district'].errors && f['district'].errors['required']">District is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-<div class="col-md-6">
-  <button class="btn btn-primary text-center text-white  float-end" type="submit"
-       [disabled]="!customerForm.valid">Save</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="state">State <span class="text-danger">*</span></label>
+                    <input type="text" placeholder="State" formControlName="state" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['state'].touched && f['state'].invalid">
+                      <div *ngIf="f['state'].errors && f['state'].errors['required']">State is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="pincode">Pin code <span class="text-danger">*</span></label>
+                    <input (keypress)="onlynumbersallowed($event)" type="text" placeholder="Pincode"
+                      formControlName="pincode" class="form-control" required [maxLength]="6">
+                    <small class="text-danger" *ngIf="f['pincode'].touched && f['pincode'].invalid">
+                      <div *ngIf="f['pincode'].errors && f['pincode'].errors['required']">Pincode is required.</div>
+                      <div *ngIf="f['pincode'].errors && f['pincode'].errors?.pattern">Pin is not Valid</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="mobile">Mobile Nmber <span class="text-danger">*</span></label>
+                    <input (keypress)="onlynumbersallowed($event)" type="text" placeholder="Mobile Number"
+                      formControlName="mobile" class="form-control" required [maxLength]="10">
+                    <small class="text-danger" *ngIf="f['mobile'].touched && f['mobile'].invalid">
+                      <div *ngIf="f['mobile'].errors && f['mobile'].errors['required']">Mobile Number is required.</div>
+                      <div *ngIf="f['mobile'].errors && f['mobile'].errors?.pattern">Mobile Number is Invalid.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="email">Email Id <span class="text-danger">*</span></label>
+                    <input type="text" placeholder="Email-id" formControlName="email" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
+                      <div *ngIf="f['email'].errors && f['email'].errors['required']">Email-id is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="plan_id">Plan Id <span class="text-danger">*</span></label>
+                    <input type="text" placeholder="Plan_id" formControlName="plan_id" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['plan_id'].touched  && f['plan_id'].invalid">
+                      <div *ngIf="f['plan_id'].errors && f['plan_id'].errors['required']"> Plan id is requried</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="status">Status <span class="text-danger">*</span></label><br>
+                    <input type="radio" formControlName="status" value="Active" class="px-5">Active
+                    <input type="radio" formControlName="status" value="Inactive">Inactive
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 text-center justify-content-center">
+              <button class="btn btn-primary btn-rounded" type="submit" [disabled]="!customerForm.valid">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

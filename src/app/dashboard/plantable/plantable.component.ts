@@ -26,6 +26,25 @@ export class PlanTableComponent implements OnInit{
   tableSize:number=7;
   tableSizes:any=[3,6,9,12];
 
+  config={
+    id:'custom',
+    itemsPerPage:7,
+    currentPage:1,
+    totalItems:0
+  }
+
+  responsive:boolean=true;
+  autoHide:boolean=false;
+  directionLinks:boolean=true;
+  maxSize:number=7;
+  labels:any={
+    previousLabel:'<---',
+    nextLabel:'--->',
+    screenReaderPaginationLabel:'Pagination',
+    screenReaderPageLabel:'page',
+    screenReaderCurrentLabel:`You're on page`
+  };
+
   planData:any;
   data:Array<Plan>=this.planTable;
   @ViewChildren(PlanSortableHeaderDirective) headers:QueryList<PlanSortableHeaderDirective>;
@@ -41,6 +60,7 @@ export class PlanTableComponent implements OnInit{
    this.planService.getPlanList().subscribe((result:any)=>{
     this.planlist=result;
     this.planTable=this.planlist.data;
+    this.config.totalItems=this.planTable.length;
    })
   }
 

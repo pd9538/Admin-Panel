@@ -1,88 +1,142 @@
-
-  <div class="container mt-5 pt-5">
+<div class="content-wrapper pt-3">
+  <div class="card heading">
     <div class="row">
-      <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h3>Plan Details</h3>
-            </div>
-            <div class="card-body">
+      <div class="col-sm-6">
+        <h4 class="text-primary"><span>Plan Details</span></h4>
+      </div>
+    </div>
+  </div>
+  <div class="content-wrapper-scroll">
+    <div class="card-body">
+      <div>
         <form method="post" form="ngForm" (ngSubmit)="savePlan()" [formGroup]="planForm">
           <input type="hidden" formControlName="id">
-          <div class="row mb-3">
-          <div class="col-md-6">
-            <input type="text" placeholder="Name" formControlName="plan_name" class="form-control" required>
-            <small class="text-danger" *ngIf="f['plan_name'].touched && f['plan_name'].invalid">
-              <div *ngIf="f['plan_name'].errors && f['plan_name'].errors['required']">Name is required.</div>
-            </small>
-          </div>
-          <div class="col-md-6 ms-auto">
-           <select id="type"  formControlName="plan_type" class="form-control" onfocus="3" required>
-              <option value="" selected>Select Type</option>
-              <option>Gold</option>
-              <option>Silver</option>
-              <option>Platinum</option>
-          </select>
-          <small class="text-danger" *ngIf="f['plan_type'].touched && f['plan_type'].errors">
-            <div *ngIf="f['plan_type'].errors && f['plan_type'].errors['required']">Type is required.</div>
-          </small>
-        </div>
-      </div>
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <input type="number" placeholder="Validity(days)" formControlName="validity_days" class="form-control" required>
-              <small class="text-danger" *ngIf="f['validity_days'].touched && f['validity_days'].invalid">
-                <div *ngIf="f['validity_days'].errors && f['validity_days'].errors['required']">Validity is required.</div>
-              </small>
+          <div class="row">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Name <span class="text-danger"> *</span></label>
+                    <input type="text" placeholder="Name" formControlName="plan_name" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['plan_name'].touched && f['plan_name'].invalid">
+                      <div *ngIf="f['plan_name'].errors && f['plan_name'].errors['required']">Name is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-md-6 ms-auto">
-              <input type="number" placeholder="Charges" formControlName="charges" class="form-control" required>
-              <small class="text-danger" *ngIf="f['charges'].touched && f['charges'].invalid">
-                <div *ngIf="f['charges'].errors && f['charges'].errors['required']">Charges is required.</div>
-              </small>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Plan Type <span class="text-danger"> *</span></label>
+                    <select id="type" formControlName="plan_type" class="form-control" onfocus="3" required>
+                      <option value="" selected>Select Type</option>
+                      <option>Gold</option>
+                      <option>Silver</option>
+                      <option>Platinum</option>
+                    </select>
+                    <small class="text-danger" *ngIf="f['plan_type'].touched && f['plan_type'].errors">
+                      <div *ngIf="f['plan_type'].errors && f['plan_type'].errors['required']">Type is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Plan Validity (Days) <span class="text-danger"> *</span></label>
+                    <input type="number" placeholder="Validity(days)" formControlName="validity_days"
+                      class="form-control" required>
+                    <small class="text-danger" *ngIf="f['validity_days'].touched && f['validity_days'].invalid">
+                      <div *ngIf="f['validity_days'].errors && f['validity_days'].errors['required']">Validity is
+                        required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Charges<span class="text-danger"> *</span></label>
+                    <input type="number" placeholder="Charges" formControlName="charges" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['charges'].touched && f['charges'].invalid">
+                      <div *ngIf="f['charges'].errors && f['charges'].errors['required']">Charges is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">GST<span class="text-danger"> *</span></label>
+                    <input type="number" placeholder="GST" formControlName="gst" class="form-control" required>
+                    <small class="text-danger" *ngIf="f['gst'].touched && f['gst'].invalid">
+                      <div *ngIf="f['gst'].errors && f['gst'].errors['required']">Gst is required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Discount</label>
+                    <input type="number" placeholder="Discount" formControlName="discount" class="form-control"
+                      required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label" for="name">Description<span class="text-danger"> *</span></label>
+                    <input type="text" placeholder="Description" formControlName="description" class="form-control"
+                      required>
+                    <small class="text-danger" *ngIf="f['description'].touched && f['description'].errors">
+                      <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is
+                        required.</div>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label"> First Time is applicable</label><br>
+                    <input type="checkbox" formControlName="first_time_applicable" >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sm-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div>
+                    <label class="form-label ">Status</label><br>
+                    <input type="radio" formControlName="status" value="Active" class="px-5">Active
+                    <input type="radio" formControlName="status" value="Inactive">Inactive
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row mb-3 ">
-            <div class="col-md-6">
-            <input type="number" placeholder="GST" formControlName="gst" class="form-control"  required>
-            <small class="text-danger" *ngIf="f['gst'].touched && f['gst'].invalid">
-              <div *ngIf="f['gst'].errors && f['gst'].errors['required']">Gst is required.</div>
-            </small>
+          <div class="col-12 text-center">
+            <button class="btn btn-primary btn-rounded" type="submit" [disabled]="!planForm.valid">Save</button>
           </div>
-          <div class="col-md-6 ms-auto">
-            <input type="number" placeholder="Discount" formControlName="discount" class="form-control" required>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <textarea rows="3" placeholder="Description" formControlName="description" class="form-control" required></textarea>
-            <small class="text-danger" *ngIf="f['description'].touched && f['description'].errors">
-              <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is required.</div>
-            </small>
-          </div>
-          <div class="col-md-3 ms-auto">
-            <input type="checkbox"  formControlName="first_time_applicable" >
-            First Time is  applicable
-          </div>
-          <div class="col-md-3 ms-auto">
-            <label class="px-3">Status :</label>
-            <input type="radio" formControlName="status" value="Active" class="py-3">Active
-            <input type="radio" formControlName="status" value="Inactive">Inactive
-          </div>
-
-        </div>
-
-
-        <div class="col-md-6">
-          <button class="btn btn-primary text-center text-white  float-end" type="submit"
-               [disabled]="!planForm.valid">Save</button>
-        </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-</div>
-
-
