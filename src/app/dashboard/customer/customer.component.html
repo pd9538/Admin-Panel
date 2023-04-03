@@ -25,7 +25,9 @@
         <table class="table custom-table">
           <thead class="text-center">
             <tr>
+
               <th><span title="sort this column">Action</span></th>
+              <th></th>
               <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th>
               <th sortable="customer_type" (sort)="onSort($event)"><span title="sort this column">Type</span></th>
               <th sortable="name" (sort)="onSort($event)"><span title="sort this column">Name</span></th>
@@ -33,11 +35,10 @@
               <th sortable="district" (sort)="onSort($event)"><span title="sort this column">District</span></th>
               <th sortable="state" (sort)="onSort($event)"><span title="sort this column">State</span></th>
               <th sortable="pincode" (sort)="onSort($event)"><span title="sort this column">Pincode</span></th>
-              <th sortable="mobile" (sort)="onSort($event)"><span title="sort this column">Mobile Number</span></th>
+              <th sortable="mobile" (sort)="onSort($event)"><span title="sort this column">Mobile</span></th>
               <th sortable="email" (sort)="onSort($event)"><span title="sort this column">E-mail</span></th>
               <th sortable="plan_id" (sort)="onSort($event)"><span title="sort this column">Plan Id</span></th>
-              <th sortable="wallet_balance" (sort)="onSort($event)"><span title="sort this column">Wallet Balance</span>
-              </th>
+              <th sortable="wallet_balance" (sort)="onSort($event)"><span title="sort this column">Wallet Balance</span></th>
               <th sortable="referid" (sort)="onSort($event)"><span title="sort this column">Refered ID</span></th>
               <th sortable="status" (sort)="onSort($event)"><span title="sort this column">Status</span></th>
             </tr>
@@ -45,9 +46,15 @@
           <tbody>
             <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable | filter:searchString | paginate:{
           itemsPerPage:tableSize, currentPage:page, totalItems:count}; let i=index">
+              <td>
+                <button type="button" class="btn btn-success" data-toggle="modal" (click)="customerView(cust.customer_id)" data-target=".bd-example-modal-lg"><i
+                    class="bi bi-patch-plus-fill"></i></button>
+
+                    
+              </td>
               <td class="text-center">
-                <div class="btn-group">
-                  <button type="button" class="btn-sm btn-success" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="btn-group"> 
+                  <button type="button" class="btn-sm btn-success"   data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-list"></i>
                   </button>
                   <ul class="dropdown-menu">
