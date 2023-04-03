@@ -31,7 +31,7 @@ export class AddcustomerComponent implements OnInit {
             district:['',[Validators.required]],
             state:['',[Validators.required]],
             mobile:['',[Validators.required,Validators.pattern("^([0-9]{10})$")]],
-            email:['',[Validators.required,Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]],
+            email:['',[Validators.required,Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$')]],
             plan_id:['',[]],
             status:['',[]]
           })

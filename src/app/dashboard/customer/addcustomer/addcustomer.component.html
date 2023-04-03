@@ -119,9 +119,10 @@
                 <div class="card-body">
                   <div>
                     <label class="form-label" for="email">Email Id <span class="text-danger">*</span></label>
-                    <input type="text" placeholder="Email-id" formControlName="email" class="form-control" required>
+                    <input type="email" placeholder="Email-id" formControlName="email" class="form-control" required>
                     <small class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
                       <div *ngIf="f['email'].errors && f['email'].errors['required']">Email-id is required.</div>
+                      <div *ngIf="f['email'].errors && f['email'].errors?.pattern"> Email-id Enter Correct Format </div>
                     </small>
                   </div>
                 </div>
