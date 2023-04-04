@@ -6,7 +6,7 @@ import { ImagesComponent } from './images.component';
 const routes: Routes = [
   { path:'imageview',component:ImagesComponent},
   { path:'add-images',component:AddImagesComponent},
-  { path:'add-images/:id',component:AddImagesComponent}
+  { path:'edit-image/:id',component:AddImagesComponent}
 ];
 
 @NgModule({

@@ -1,27 +1,18 @@
 export class Images{
   id:number;
-  title:string
-  name:string;
+  image_title:string
   description:string;
-  download_count:number;
-  view_count:number;
-  like_count:number;
-  category:string;
-  subcategory:string;
-  date:Date;
+  category_id:number;
+  subcategory_id:number;
+  image:File
 
-  constructor(id:number,title:string,name:string,description:string,download_count:number,
-    view_count:number,like_count:number,category:string,subcategory:string,date:Date){
+  constructor(id:number,image_title:string,description:string,category_id:number,subcategory_id:number,image:File){
     this.id=id;
-    this.title=title;
-    this.name=name;
+    this.image_title=image_title;
     this.description=description;
-    this.download_count=download_count;
-    this.view_count=view_count;
-    this.like_count=like_count;
-    this.category=category;
-    this.subcategory=subcategory;
-    this.date=date;
+    this.category_id=category_id;
+    this.subcategory_id=subcategory_id;
+    this.image=image;
   }
 }
 

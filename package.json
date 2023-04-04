@@ -29,6 +29,7 @@
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "mdb-angular-ui-kit": "^4.0.0",
+    "ng2-file-upload": "^3.0.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^6.0.3",
     "popper.js": "^1.16.1",

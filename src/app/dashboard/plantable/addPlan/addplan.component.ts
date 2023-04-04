@@ -1,8 +1,7 @@
 import { PlanService } from './../services/plan.service';
-import { NgbdModalContentComponent } from '../../../common/Modal/modal.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,8 +20,6 @@ export class AddPlanComponent implements OnInit {
   state:number;
   status:string;
   plan_type:string;
-
-  fd=new FormData();
 
   get f(){ return this.planForm.controls; }
 
@@ -53,6 +50,7 @@ constructor(public router:Router,
       this.editplanId=this.activeRoute.snapshot.params.id;
         if(this.editplanId!=undefined){
           this.planService.getPlanById(this.editplanId).subscribe((plan:any)=>{
+            console.log(plan)
             if(plan.data.status==1){
               this.status="Active";
             }
@@ -95,6 +93,9 @@ constructor(public router:Router,
             Swal.fire(res.message,'','success');
             this.router.navigate(['root/dashboard/plantable/planview']);
           }
+          else{
+            Swal.fire(res.message,'','error');
+          }
         })
       }else{
         let planData=this.planForm.value;
@@ -103,6 +104,9 @@ constructor(public router:Router,
           Swal.fire(data.message,'','success');
           this.planForm.reset();
           this.router.navigate(['/root/dashboard/plantable/planview']);
+          }
+          else{
+            Swal.fire(data.message,'','error');
           }
         })
 
