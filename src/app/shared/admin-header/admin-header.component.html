@@ -4,7 +4,7 @@
       <img src="" alt="Admin Dashboard" />
     </a>
   </div>
-  <div>
+  <!-- <div>
     <div class="search-container" *ngIf="this.now < 12; else afternoon">
       <div class="input-group btn btn-light" style="border-radius: 50px;background-color: white;
       border: none;">Good Morning! Admin </div>
@@ -20,7 +20,7 @@
       border: none;">
         Good Evening! Admin</div>
     </ng-template>
-  </div>
+  </div> -->
   <div class="sidebar-menu ">
     <div class="sidebarMenuScroll">
       <ul>
@@ -66,12 +66,43 @@
             <span class="menu-text">Customer</span>
           </a>
         </li>
-        <li class="sidebar">
-          <a routerLink="" (click)="logout()">
-            <i class="bi bi-box-arrow-left"></i>
-            <span class="menu-text">Logout</span></a>
-        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+
+    <div class="header-actions-container">
+       <ul class="header-actions">
+        <li class="dropdown">
+          <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+          <div>
+            <div class="search-container" *ngIf="this.now < 12; else afternoon">
+              <div class="input-group btn btn-light" style="border-radius: 50px;background-color: white;
+              border: none;">Good Morning! Admin </div>
+            </div>
+            <ng-template #afternoon class="search-container">
+              <div class="input-group btn btn-light" style="border-radius: 50px;background-color: white;
+              border: none;"
+                *ngIf="this.now>=12 && this.now<16; else evening">
+                Good Noon! Admin</div>
+            </ng-template>
+            <ng-template #evening class="search-container">
+              <div class="pl-4 ml-3 menu-text text-center" style="border-radius:50px;background-color: white;
+              border: none;">
+                Good Evening! Admin</div>
+            </ng-template>
+          </div>
+          <span class="avatar"><img  alt="User Avatar"><span class="status online"></span></span></a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+            <div class="header-profile-actions">
+              <a routerLink="myaccount/settings">Profile</a>
+              <a routerLink="myaccount/settings">Settings</a>
+              <a routerLink="" (click)="logout()">Logout</a></div>
+        </div>
+        </li>
+       </ul>
+    </div>
+
+
