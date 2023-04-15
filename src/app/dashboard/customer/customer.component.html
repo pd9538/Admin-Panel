@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
 <div class="content-wrapper pt-3">
   <div class="card heading">
     <div class="row">
@@ -21,17 +24,17 @@
       </div>
     </div>
     <div class="card-body">
+
       <div>
         <table class="table custom-table">
           <thead class="text-center">
             <tr>
 
               <th><span title="sort this column">Action</span></th>
-              <th></th>
-              <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th>
+              <!-- <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th> -->
               <th sortable="customer_type" (sort)="onSort($event)"><span title="sort this column">Type</span></th>
               <th sortable="name" (sort)="onSort($event)"><span title="sort this column">Name</span></th>
-              <th sortable="address" (sort)="onSort($event)"><span title="sort this column">Address</span></th>
+              <!-- <th sortable="address" (sort)="onSort($event)"><span title="sort this column">Address</span></th> -->
               <th sortable="district" (sort)="onSort($event)"><span title="sort this column">District</span></th>
               <th sortable="state" (sort)="onSort($event)"><span title="sort this column">State</span></th>
               <th sortable="pincode" (sort)="onSort($event)"><span title="sort this column">Pincode</span></th>
@@ -46,15 +49,10 @@
           <tbody>
             <tr class="col-md-2 align-middle text-center" *ngFor="let cust of customerTable | filter:searchString | paginate:{
           itemsPerPage:tableSize, currentPage:page, totalItems:count}; let i=index">
-              <td>
-                <button type="button" class="btn btn-success" data-toggle="modal" (click)="customerView(cust.customer_id)" data-target=".bd-example-modal-lg"><i
-                    class="bi bi-patch-plus-fill"></i></button>
 
-                    
-              </td>
               <td class="text-center">
-                <div class="btn-group"> 
-                  <button type="button" class="btn-sm btn-success"   data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="btn-group">
+                  <button type="button" class="show btn-sm btn-success btn-rounded" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-list"></i>
                   </button>
                   <ul class="dropdown-menu">
@@ -67,17 +65,17 @@
                   </ul>
                 </div>
               </td>
-              <td>{{cust.customer_id}}</td>
+              <!-- <td>{{i+1}}</td> -->
               <td>{{cust.customer_type=="1"?"Basic":cust.customer_type=="2"?"Prime":""}}</td>
               <td>{{cust.name}}</td>
-              <td>{{cust.address}}</td>
+              <!-- <td>{{cust.address}}</td> -->
               <td>{{cust.district}}</td>
               <td>{{cust.state}}</td>
               <td>{{cust.pincode}}</td>
               <td>{{cust.mobile}}</td>
               <td>{{cust.email}}</td>
               <td>{{cust.plan_id}}</td>
-              <td>{{cust.wallet_balance}}</td>
+              <td>{{cust.wallet_balance*1}}</td>
               <td>{{cust.referid}}</td>
               <td><span
                   [ngClass]="{'badge rounded-pill bg-success':cust.status=='1','badge rounded-pill bg-danger':cust.status=='0','badge rounded-pill bg-warn':cust.status}">
@@ -85,6 +83,37 @@
             </tr>
           </tbody>
         </table>
+        <!-- <div class="modal" id="myModal" [style.display]="showModal?'block':'none'">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                  <h4 class="modal-title">Customer Details:</h4>
+                  <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+                </div>
+
+                <div class="modal-body" *ngFor="let cust of customerTable">
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click) = "hide()">Close</button>
+                </div>
+            </div>
+          </div>
+        </div> -->
+
       </div>
 
       <pagination-template #p="paginationApi" (pageChange)="onTableDataChange($event)">
@@ -106,4 +135,6 @@
 
     </div>
   </div>
+</div>
+</div>
 </div>

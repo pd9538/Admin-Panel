@@ -11,22 +11,22 @@ export class WalletService{
   walletTable:Wallet[]=[];
 
   constructor(private http:HttpClient){
-    this.walletTable.push(new Wallet(1,5000,0,5000,1,101,'credit'));
-    this.walletTable.push(new Wallet(2,5000,0,10000,1,101,'credit'));
-    this.walletTable.push(new Wallet(3,0,2000,8000,1,101,'debit'));
-    this.walletTable.push(new Wallet(4,0,3000,5000,1,101,'debit'));
+  }
+
+  getWalletDetails(){
+    return this.http.get(this.apiUrl+'/wallets')
   }
 
   getWalletById(id:number){
-    return this.walletTable.values[id];
+    return this.http.post(this.apiUrl+'/editWallet-id',{wallet_id:id});
   }
 
   createWallet(wallet:Wallet){
-    return this.walletTable.push(wallet);
+   return this.http.post(this.apiUrl+'/addWallet',wallet);
   }
 
   updateWallet(value:any){
-    return this.http.put(`${this.apiUrl}`,value);
+    return this.http.put(this.apiUrl+'/editWallet',value);
   }
 
     // deleteWallet(id:number)Observable<any>{

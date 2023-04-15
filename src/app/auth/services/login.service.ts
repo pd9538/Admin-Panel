@@ -1,9 +1,9 @@
 import { UserLogin } from './../userdata';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import jwt_decode from 'jwt-decode';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,6 @@ export class LoginService {
 
   setToken(token:string):void{
     this.token=token;
-    console.log(localStorage.getItem('token'))
   }
 
   getToken():string{

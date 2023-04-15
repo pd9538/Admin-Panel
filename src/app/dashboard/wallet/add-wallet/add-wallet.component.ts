@@ -2,6 +2,7 @@ import { WalletService } from './../services/wallet.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-wallet',
@@ -14,6 +15,9 @@ export class AddWalletComponent implements OnInit {
   submitted:boolean=false;
   editWalletId:number;
   walletId:string;
+  isAddMode:boolean;
+  transaction_type:any;
+
 
   get f(){ return this.walletForm.controls; }
 
@@ -23,16 +27,19 @@ export class AddWalletComponent implements OnInit {
               private walletService:WalletService
       ){
         this.walletForm=this.fb.group({
-          id:[{value:'',hidden:true}],
+          wallet_id:[this.editWalletId,{hidden:true}],
           credit:['',[Validators.required]],
           debit:['',[Validators.required]],
           balance:['',[Validators.required]],
-          ttype:['',[Validators.required]]
+          customer_id:['',[Validators.required]],
+          plan_id:['',[Validators.required]],
+          transaction_type:['',[]]
         })
       }
 
   ngOnInit(): void {
-
+    this.getWallet();
+    this.isAddMode=!this.editWalletId;
   }
 
   getWallet(){
@@ -40,11 +47,23 @@ export class AddWalletComponent implements OnInit {
 
     if(this.editWalletId!=undefined){
       this.walletService.getWalletById(this.editWalletId).subscribe((wallet:any)=>{
+        if(wallet.data.transaction_type==0){
+          this.transaction_type='Credit'
+        }
+        else if(wallet.data.transaction_type==1){
+          this.transaction_type='Debit'
+        }
+        else{
+          this.transaction_type='';
+        }
+
         this.walletForm.patchValue({
           credit:wallet.data.credit,
           debit:wallet.data.debit,
           balance:wallet.data.balance,
-          transaction_type:wallet.data.transaction_type
+          transaction_type:this.transaction_type,
+          plan_id:wallet.data.plan_id,
+          customer_id:wallet.data.customer_id,
         })
       })
     }
@@ -52,22 +71,32 @@ export class AddWalletComponent implements OnInit {
   }
 
   saveWallet(){
-    if(this.walletId){
-      let data=this.walletForm.value;
-      console.log(data);
-      this.walletService.updateWallet(data);
+    if(this.isAddMode){
+      let updatedData=this.walletForm.value;
+      console.log(updatedData)
+      this.walletService.updateWallet(updatedData).subscribe((result:any)=>{
+        if(result.status==1){
+          Swal.fire(result.message,'','success');
+          this.router.navigate(['/root/dashboard/wallet/walletview']);
+        }
+        else{
+          Swal.fire(result.message,'','error');
+        }
+      })
     }
     else{
       let walletData=this.walletForm.value;
-      this.walletService.createWallet(walletData);
+      this.walletService.createWallet(walletData).subscribe((result:any)=>{
+        if(result.status==1){
+          Swal.fire(result.message,'','success');
+          this.router.navigate(['/root/dashboard/wallet/walletview']);
+        }
+        else{
+          Swal.fire(result.message,'','error');
+        }
+      })
       this.walletForm.reset();
       this.router.navigate(['/root/dashboard/wallet/walletview']);
     }
   }
-
-
-  getBalance(){
-
-  }
-
 }

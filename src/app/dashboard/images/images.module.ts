@@ -23,7 +23,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     CommonModule,
     ImagesRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     NgxPaginationModule,
     FileUploadModule
   ]

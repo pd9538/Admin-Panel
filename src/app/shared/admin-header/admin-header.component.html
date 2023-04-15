@@ -34,10 +34,10 @@
             <i class="bi bi-gear"></i> <span class="ms-1 d-none d-sm-inline">My Account</span> </a>
           <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
             <li class="w-100">
-              <a class="dropdown-item"  routerLink="myaccount/profile"> <i class="bi bi-person"></i> Profile </a>
+              <a class="dropdown-item"  routerLink="dashboard/myaccount/settings"> <i class="bi bi-person"></i> Profile </a>
             </li>
             <li>
-              <a class="dropdown-item" routerLink="myaccount/settings"> <i class="bi bi-tools"></i> Settings </a>
+              <a class="dropdown-item" routerLink="dashboard/myaccount/settings"> <i class="bi bi-tools"></i> Settings </a>
             </li>
 
           </ul>
@@ -76,20 +76,20 @@
     <div class="header-actions-container">
        <ul class="header-actions">
         <li class="dropdown">
-          <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+          <a  id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
           <div>
             <div class="search-container" *ngIf="this.now < 12; else afternoon">
-              <div class="input-group btn btn-light" style="border-radius: 50px;background-color: white;
+              <div class="input-group btn btn-light" style="border-radius: 50px;background:transparent;
               border: none;">Good Morning! Admin </div>
             </div>
             <ng-template #afternoon class="search-container">
-              <div class="input-group btn btn-light" style="border-radius: 50px;background-color: white;
+              <div class="input-group btn btn-light" style="border-radius: 50px;background:transparent;
               border: none;"
                 *ngIf="this.now>=12 && this.now<16; else evening">
                 Good Noon! Admin</div>
             </ng-template>
             <ng-template #evening class="search-container">
-              <div class="pl-4 ml-3 menu-text text-center" style="border-radius:50px;background-color: white;
+              <div class="input-group btn btn-light" style="border-radius:50px;background:transparent;
               border: none;">
                 Good Evening! Admin</div>
             </ng-template>
@@ -97,8 +97,8 @@
           <span class="avatar"><img  alt="User Avatar"><span class="status online"></span></span></a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
             <div class="header-profile-actions">
-              <a routerLink="myaccount/settings">Profile</a>
-              <a routerLink="myaccount/settings">Settings</a>
+              <a routerLink="dashboard/myaccount/settings">Profile</a>
+              <a routerLink="dashboard/myaccount/settings">Settings</a>
               <a routerLink="" (click)="logout()">Logout</a></div>
         </div>
         </li>

@@ -12,9 +12,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
-
-
-
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -29,7 +26,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ]
 })
 export class CustomerModule { }
