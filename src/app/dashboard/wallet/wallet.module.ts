@@ -5,18 +5,24 @@ import { CommonModule } from '@angular/common';
 
 import { WalletRoutingModule } from './wallet-routing.module';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
+import { WalletFilterPipe } from './services/wallet-filter.pipe';
+import { WalletSortableHeaderDirective } from './services/walletsortable-header.directive';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     WalletComponent,
-    AddWalletComponent
+    AddWalletComponent,
+    WalletFilterPipe,
+    WalletSortableHeaderDirective
   ],
   imports: [
     CommonModule,
     WalletRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class WalletModule { }

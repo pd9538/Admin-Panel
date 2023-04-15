@@ -20,6 +20,8 @@ export class CustomerComponent implements OnInit{
     tableSize:number=7;
     tableSizes:any=[3,6,9,12];
 
+    showModal:boolean;
+
     config={
       id:'custom',
       itemsPerPage:7,
@@ -31,7 +33,8 @@ export class CustomerComponent implements OnInit{
     data:Array<Customer>=this.customerTable;
     @ViewChildren(CustSortableHeaderDirective) headers:QueryList<CustSortableHeaderDirective>;
 
-    constructor(private custService:CustomerService,private router:Router){}
+    constructor(private custService:CustomerService,
+                private router:Router){}
 
     ngOnInit(): void{
         this.reloadData();
@@ -40,6 +43,7 @@ export class CustomerComponent implements OnInit{
         this.custService.getAllCustomer().subscribe((customer:any)=>{
             this.customer=customer;
             this.customerTable=this.customer.data;
+            console.log(this.customerTable);
         })
     }
 
@@ -86,4 +90,11 @@ export class CustomerComponent implements OnInit{
       })
     }
 
+    onClick(){
+      this.showModal=true;
+    }
+
+   onRowClick(event,row){
+      console.log(row.address);
+   }
 }

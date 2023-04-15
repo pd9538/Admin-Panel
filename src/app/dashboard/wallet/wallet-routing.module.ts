@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path:'walletview',component:WalletComponent,canActivate:[AuthGuard]},
   {path:'add-wallet',component:AddWalletComponent,canActivate:[AuthGuard]},
-  {path:'add-wallet/:id',component:AddWalletComponent,canActivate:[AuthGuard]}
+  {path:'edit-wallet/:id',component:AddWalletComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

@@ -29,11 +29,14 @@
         <thead class="text-center">
           <tr>
             <th><span>Action</span></th>
-            <th sortable="id" (sort)="onSort($event)"><span>Id</span></th>
+            <!-- <th sortable="id" (sort)="onSort($event)"><span>Id</span></th> -->
             <th sortable="image_title" (sort)="onSort($event)"><span>Title</span></th>
             <!-- <th sortable="description" (sort)="onSort($event)"><span>Description</span></th> -->
-            <th sortable="category_id" (sort)="onSort($event)"><span>Category Id</span></th>
-            <th sortable="subcategory_id" (sort)="onSort($event)"><span>Subcategory Id</span></th>
+            <th sortable="category_id" (sort)="onSort($event)"><span>Category </span></th>
+            <th sortable="subcategory_id" (sort)="onSort($event)"><span>Subcategory</span></th>
+            <!-- <th sortable="image" (sort)="onSort($event)"><span>File</span></th> -->
+            <!-- <th sortable="image" (sort)="onSort($event)"><span>Status</span></th> -->
+
           </tr>
         </thead>
         <tbody>
@@ -54,11 +57,13 @@
               </ul>
             </div>
           </td>
-            <td>{{image.image_id}}</td>
+            <!-- <td>{{image.image_id}}</td> -->
             <td>{{image.image_title}}</td>
             <!-- <td>{{image.description}}</td> -->
-            <td>{{image.category_id}}</td>
-            <td>{{image.subcategory_id}}</td>
+            <td>{{image.name}}</td>
+            <td>{{image.subname}}</td>
+            <!-- <td>{{image.image}}</td> -->
+
 
           </tr>
         </tbody>

@@ -61,6 +61,7 @@ export class PlanTableComponent implements OnInit{
     this.planlist=result;
     this.planTable=this.planlist.data;
     this.config.totalItems=this.planTable.length;
+    console.log(this.planTable);
    })
   }
 

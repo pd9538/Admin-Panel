@@ -31,10 +31,10 @@ export class ImagesComponent implements OnInit{
     }
 
     responsive:boolean=true;
-  autoHide:boolean=false;
-  directionLinks:boolean=true;
-  maxSize:number=7;
-  labels:any={
+    autoHide:boolean=false;
+    directionLinks:boolean=true;
+    maxSize:number=7;
+    labels:any={
     previousLabel:'<---',
     nextLabel:'--->',
     screenReaderPaginationLabel:'Pagination',
@@ -43,8 +43,9 @@ export class ImagesComponent implements OnInit{
   };
 
     imageData:any;
-  data:Array<Images>=this.imageTable;
-  @ViewChildren(ImageSortableHeaderDirective) headers:QueryList<ImageSortableHeaderDirective>;
+    data:Array<Images>=this.imageTable;
+   @ViewChildren(ImageSortableHeaderDirective) headers:QueryList<ImageSortableHeaderDirective>;
+
     constructor(public router:Router,private imageService:ImageService){}
 
 
@@ -57,6 +58,7 @@ export class ImagesComponent implements OnInit{
           this.imageList=data;
           this.imageTable=this.imageList.data;
           this.config.totalItems=this.imageTable.length;
+          console.log(this.imageTable);
         })
       }
 
@@ -68,6 +70,7 @@ export class ImagesComponent implements OnInit{
         this.imageService.deleteImage(id).subscribe((result:any)=>{
           if(result.status==1){
             Swal.fire(result.message,'','success');
+            this.reloadData();
           }
           else{
             Swal.fire(result.message,'','error');

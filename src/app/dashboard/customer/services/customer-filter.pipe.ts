@@ -27,15 +27,15 @@ export class CustomerFilterPipe implements PipeTransform {
       if(customer.status==1){
         this.status="Active"
       }
-      else{
+      else if(customer.status==2){
         this.status="Inactive"
       }
 
 
-      if(customer.customer_type==0){
+      if(customer.customer_type==1){
         this.customer_type="Basic"
       }
-      else if(customer.customer_type==1){
+      else if(customer.customer_type==2){
         this.customer_type="Prime"
       }
 

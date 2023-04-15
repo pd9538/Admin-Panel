@@ -29,7 +29,7 @@
           <thead class="text-center">
             <tr>
               <th><span>Action</span></th>
-              <th sortable="plan_id" (sort)="onSort($event)"><span>Id</span></th>
+              <!-- <th sortable="plan_id" (sort)="onSort($event)"><span>Id</span></th> -->
               <th sortable="plan_name" (sort)="onSort($event)"><span>Name</span></th>
               <th sortable="plan_type" (sort)="onSort($event)"><span>Type</span></th>
               <th sortable="validity_days" (sort)="onSort($event)"><span>Validity(days)</span></th>
@@ -54,13 +54,13 @@
                   </ul>
                 </div>
               </td>
-              <td>{{plan.plan_id}}</td>
+              <!-- <td>{{plan.plan_id}}</td> -->
               <td>{{plan.plan_name}}</td>
               <td>{{plan.plan_type=="1"?"Gold":plan.plan_type=="2"?"Silver":plan.plan_type=="3"?"Platinum":""}}</td>
               <td>{{plan.validity_days}}</td>
-              <td>{{plan.charges}}</td>
-              <td>{{plan.gst}}</td>
-              <td>{{plan.discount}}</td>
+              <td>{{plan.charges*1}}</td>
+              <td>{{plan.gst*1}}</td>
+              <td>{{plan.discount*1}}</td>
               <td><span
                   [ngClass]="{'badge rounded-pill bg-success':plan.status=='1','badge rounded-pill bg-danger':plan.status=='0','badge rounded-pill bg-warn':plan.status}">
                   {{plan.status =="1"?"Active":"Inactive"}}</span></td>

@@ -21,7 +21,7 @@ export class ImageService {
     return this.http.post(this.apiUrl+'/addimage',image);
 
    }
-   updateImage(value:any):Observable<Images>{
+   updateImage(value){
     return this.http.post<Images>(this.apiUrl+'/editimage',value)
    }
 
@@ -33,5 +33,12 @@ export class ImageService {
     return this.http.get(this.apiUrl+'/image-details');
    }
 
+   getCategory(){
+    return this.http.get(this.apiUrl+'/category');
+   }
+
+   getSubCategoy(data:number){
+    return this.http.post(this.apiUrl+'/subcategory',{"category_id":data});
+   }
 
 }

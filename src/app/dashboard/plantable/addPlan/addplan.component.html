@@ -103,8 +103,8 @@
                 <div class="card-body">
                   <div>
                     <label class="form-label" for="name">Description<span class="text-danger"> *</span></label>
-                    <input type="text" placeholder="Description" formControlName="description" class="form-control"
-                      required>
+                    <textarea placeholder="Description" formControlName="description" class="form-control"
+                      required></textarea>
                     <small class="text-danger" *ngIf="f['description'].touched && f['description'].errors">
                       <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is
                         required.</div>

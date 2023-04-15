@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {  FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -57,6 +57,7 @@ export class AddcustomerComponent implements OnInit {
     this.editCustId=this.activeRoute.snapshot.params.id;
     if(this.editCustId!=undefined){
       this.custService.getCustById(this.editCustId).subscribe((customer:any)=>{
+        console.log(customer)
         if(customer.data.status==1){
           this.status="Active";
         }
