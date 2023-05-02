@@ -70,5 +70,23 @@
     </table>
   </div>
 </div>
+<div *ngIf="imageTable.length>=7">
+  <pagination-template #p="paginationApi" (pageChange)="onTableDataChange($event)">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item" [class.disabled]="p.isFirstPage()">
+            <a class="page-link" *ngIf="!p.isFirstPage()" (click)="p.previous()">Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let page of p.pages" [class.current]="p.getCurrent()===page.value">
+            <a [ngClass]="p.getCurrent()===page.value?'page-link active':'page-link'"
+              (click)="p.setCurrent(page.value)">{{page.label}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" *ngIf="!p.isLastPage()" (click)="p.next()">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </pagination-template>
+  </div>
 </div>
 </div>

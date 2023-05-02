@@ -29,7 +29,6 @@
         <table class="table custom-table">
           <thead class="text-center">
             <tr>
-
               <th><span title="sort this column">Action</span></th>
               <!-- <th sortable="customer_id" (sort)="onSort($event)"><span title="sort this column">Id</span></th> -->
               <th sortable="customer_type" (sort)="onSort($event)"><span title="sort this column">Type</span></th>
@@ -83,39 +82,8 @@
             </tr>
           </tbody>
         </table>
-        <!-- <div class="modal" id="myModal" [style.display]="showModal?'block':'none'">
-          <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                  <h4 class="modal-title">Customer Details:</h4>
-                  <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
-                </div>
-
-                <div class="modal-body" *ngFor="let cust of customerTable">
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                  <p></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click) = "hide()">Close</button>
-                </div>
-            </div>
-          </div>
-        </div> -->
-
       </div>
-
+      <div *ngIf="customerTable.length>=7">
       <pagination-template #p="paginationApi" (pageChange)="onTableDataChange($event)">
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-end">
@@ -132,7 +100,7 @@
           </ul>
         </nav>
       </pagination-template>
-
+    </div>
     </div>
   </div>
 </div>

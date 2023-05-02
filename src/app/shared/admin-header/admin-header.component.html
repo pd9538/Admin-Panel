@@ -34,12 +34,11 @@
             <i class="bi bi-gear"></i> <span class="ms-1 d-none d-sm-inline">My Account</span> </a>
           <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
             <li class="w-100">
-              <a class="dropdown-item"  routerLink="dashboard/myaccount/settings"> <i class="bi bi-person"></i> Profile </a>
+              <a class="dropdown-item"  routerLink="dashboard/myaccount/profile"> <i class="bi bi-person"></i> Profile </a>
             </li>
             <li>
               <a class="dropdown-item" routerLink="dashboard/myaccount/settings"> <i class="bi bi-tools"></i> Settings </a>
             </li>
-
           </ul>
         </li>
         <li class="sidebar">
@@ -97,7 +96,7 @@
           <span class="avatar"><img  alt="User Avatar"><span class="status online"></span></span></a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
             <div class="header-profile-actions">
-              <a routerLink="dashboard/myaccount/settings">Profile</a>
+              <a routerLink="dashboard/myaccount/profile">Profile</a>
               <a routerLink="dashboard/myaccount/settings">Settings</a>
               <a routerLink="" (click)="logout()">Logout</a></div>
         </div>
