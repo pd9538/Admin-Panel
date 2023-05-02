@@ -4,8 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Component,  OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { from, mergeMap, toArray } from 'rxjs';
-import { group } from '@angular/animations';
+
 
 @Component({
   selector: 'app-add-images',
@@ -116,7 +115,6 @@ ngOnInit(): void {
     formData.append('file',this.selectedFile);
 
       this.editImageId=this.activeRoute.snapshot.params.id;
-
 
     if(!this.isAddMode){
       this.imageService.updateImage(formData).subscribe((result:any)=>{

@@ -49,8 +49,7 @@ export class PlanTableComponent implements OnInit{
   data:Array<Plan>=this.planTable;
   @ViewChildren(PlanSortableHeaderDirective) headers:QueryList<PlanSortableHeaderDirective>;
   constructor(public router:Router,
-    private planService:PlanService
-    ){}
+    private planService:PlanService){}
 
   ngOnInit(): void {
     this.reloadData();

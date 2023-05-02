@@ -33,9 +33,9 @@
               <th sortable="plan_name" (sort)="onSort($event)"><span>Name</span></th>
               <th sortable="plan_type" (sort)="onSort($event)"><span>Type</span></th>
               <th sortable="validity_days" (sort)="onSort($event)"><span>Validity(days)</span></th>
-              <th sortable="charges" (sort)="onSort($event)"><span>Charges</span></th>
               <th sortable="gst" (sort)="onSort($event)"><span>GST</span></th>
               <th sortable="discount" (sort)="onSort($event)"><span>Discount</span></th>
+              <th sortable="charges" (sort)="onSort($event)"><span>Charges</span></th>
               <th sortable="status" (sort)="onSort($event)"><span>Status</span></th>
             </tr>
           </thead>
@@ -58,9 +58,9 @@
               <td>{{plan.plan_name}}</td>
               <td>{{plan.plan_type=="1"?"Gold":plan.plan_type=="2"?"Silver":plan.plan_type=="3"?"Platinum":""}}</td>
               <td>{{plan.validity_days}}</td>
-              <td>{{plan.charges*1}}</td>
               <td>{{plan.gst*1}}</td>
               <td>{{plan.discount*1}}</td>
+              <td>{{plan.charges*1}}</td>
               <td><span
                   [ngClass]="{'badge rounded-pill bg-success':plan.status=='1','badge rounded-pill bg-danger':plan.status=='0','badge rounded-pill bg-warn':plan.status}">
                   {{plan.status =="1"?"Active":"Inactive"}}</span></td>
@@ -68,7 +68,7 @@
           </tbody>
         </table>
       </div>
-
+      <div *ngIf="planTable.length>=7">
       <pagination-template #p="paginationApi" (pageChange)="onTableDataChange($event)">
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-end">
@@ -85,6 +85,7 @@
           </ul>
         </nav>
       </pagination-template>
+    </div>
 
     </div>
   </div>

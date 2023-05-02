@@ -95,7 +95,7 @@
                       formControlName="pincode" class="form-control" required [maxLength]="6">
                     <small class="text-danger" *ngIf="f['pincode'].touched && f['pincode'].invalid">
                       <div *ngIf="f['pincode'].errors && f['pincode'].errors['required']">Pincode is required.</div>
-                      <div *ngIf="f['pincode'].errors && f['pincode'].errors?.pattern">Pin is not Valid</div>
+                      <div *ngIf="f['pincode'].errors && f['pincode'].errors['pattern']">Pin is not Valid</div>
                     </small>
                   </div>
                 </div>
@@ -106,12 +106,12 @@
               <div class="card">
                 <div class="card-body">
                   <div>
-                    <label class="form-label" for="mobile">Mobile Nmber <span class="text-danger">*</span></label>
+                    <label class="form-label" for="mobile">Mobile Number <span class="text-danger">*</span></label>
                     <input (keypress)="onlynumbersallowed($event)" type="text" placeholder="Mobile Number"
                       formControlName="mobile" class="form-control" required [maxLength]="10">
                     <small class="text-danger" *ngIf="f['mobile'].touched && f['mobile'].invalid">
                       <div *ngIf="f['mobile'].errors && f['mobile'].errors['required']">Mobile Number is required.</div>
-                      <div *ngIf="f['mobile'].errors && f['mobile'].errors?.pattern">Mobile Number is Invalid.</div>
+                      <div *ngIf="f['mobile'].errors && f['mobile'].errors['pattern']">Mobile Number is Invalid.</div>
                     </small>
                   </div>
                 </div>
@@ -125,7 +125,7 @@
                     <input type="email" placeholder="Email-id" formControlName="email" class="form-control" required>
                     <small class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
                       <div *ngIf="f['email'].errors && f['email'].errors['required']">Email-id is required.</div>
-                      <div *ngIf="f['email'].errors && f['email'].errors?.pattern"> Email-id Enter Correct Format </div>
+                      <div *ngIf="f['email'].errors && f['email'].errors['pattern']"> Enter Valid email id. </div>
                     </small>
                   </div>
                 </div>

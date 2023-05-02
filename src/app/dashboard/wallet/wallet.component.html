@@ -8,8 +8,8 @@
           <h4 class="text-primary"><span>Wallet</span></h4>
         </div>
         <div class="col-sm-3">
-          <a routerLink="/root/dashboard/wallet/add-wallet" class="btn btn-sm btn-primary btn-rounded"
-            style="margin-top: -6px;"><i class="bi bi-plus"></i> NEW</a>
+          <!-- <a routerLink="/root/dashboard/wallet/add-wallet" class="btn btn-sm btn-primary btn-rounded"
+            style="margin-top: -6px;"><i class="bi bi-plus"></i> NEW</a> -->
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
             </tbody>
           </table>
         </div>
-        <div *ngIf="!walletTable">
+        <div *ngIf="walletTable.length>=7">
       <pagination-template #p="paginationApi" (pageChange)="onTableDataChange($event)">
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
