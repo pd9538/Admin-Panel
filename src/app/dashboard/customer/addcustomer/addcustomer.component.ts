@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PlanService } from '../../plantable/services/plan.service';
 
 @Component({
   selector: 'app-addcustomer',
@@ -16,6 +17,10 @@ export class AddcustomerComponent implements OnInit {
   isAddMode:boolean;
   status:String;
   type:string;
+  planId:any;
+  planStatus:any[]=[];
+  planTable:{key:string,value:string}[]=[];
+
 
  constructor(private custService:CustomerService,
              public router:Router,
@@ -42,7 +47,20 @@ export class AddcustomerComponent implements OnInit {
   ngOnInit(): void {
     this.getCustomer();
     this.isAddMode=!this.editCustId;
+    this.getPlanList();
   }
+
+    getPlanList(){
+      this.custService.getPlanList().subscribe((result:any)=>{
+        this.planId=result;
+        this.planStatus=this.planId.data;
+        this.planStatus.forEach(element => {
+            if(element.status=="1"){
+              this.planTable.push({key:element.plan_name,value:element.plan_id});
+            }
+        });
+      })
+    }
 
      onlynumbersallowed (event):boolean{
       event = (event) ? event : window.event;
@@ -57,7 +75,6 @@ export class AddcustomerComponent implements OnInit {
     this.editCustId=this.activeRoute.snapshot.params.id;
     if(this.editCustId!=undefined){
       this.custService.getCustById(this.editCustId).subscribe((customer:any)=>{
-        console.log(customer)
         if(customer.data.status==1){
           this.status="Active";
         }

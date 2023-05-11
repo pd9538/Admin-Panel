@@ -19,6 +19,12 @@ export class CustomerComponent implements OnInit{
     count:number=0;
     tableSize:number=7;
     tableSizes:any=[3,6,9,12];
+    cust:any;
+    custResult:any[]=[];
+
+    planDetails:any;
+    planTable:any[]=[];
+    planname:any;
 
     showModal:boolean;
 
@@ -39,13 +45,15 @@ export class CustomerComponent implements OnInit{
     ngOnInit(): void{
         this.reloadData();
     }
+
     reloadData(){
         this.custService.getAllCustomer().subscribe((customer:any)=>{
             this.customer=customer;
             this.customerTable=this.customer.data;
-            console.log(this.customerTable);
-        })
+        });
     }
+
+
 
     updateCustomer(id:number){
       this.router.navigate(['/root/dashboard/customer/edit-customer',id]);
@@ -90,11 +98,11 @@ export class CustomerComponent implements OnInit{
       })
     }
 
-    onClick(){
-      this.showModal=true;
-    }
+    // onClick(){
+    //   this.showModal=true;
+    // }
 
-   onRowClick(event,row){
-      console.log(row.address);
-   }
+  //  onRowClick(event,row){
+  //     console.log(row.address);
+  //  }
 }

@@ -135,10 +135,14 @@
               <div class="card">
                 <div class="card-body">
                   <div>
-                    <label class="form-label" for="plan_id">Plan Id <span class="text-danger">*</span></label>
-                    <input type="text" placeholder="Plan_id" formControlName="plan_id" class="form-control" required>
+                    <label class="form-label" for="plan_id">Plan Name <span class="text-danger">*</span></label>
+                    <!-- <input type="text" placeholder="Plan_id" formControlName="plan_id" class="form-control" required> -->
+                    <select id="plan_id" formControlName="plan_id"  onfocus="2" class="form-control">
+                      <option value="" selected>Select Plan Name</option>
+                       <option *ngFor="let plan of planTable" [value]="plan.value">{{plan.key}}</option>
+                    </select>
                     <small class="text-danger" *ngIf="f['plan_id'].touched  && f['plan_id'].invalid">
-                      <div *ngIf="f['plan_id'].errors && f['plan_id'].errors['required']"> Plan id is requried</div>
+                      <div *ngIf="f['plan_id'].errors && f['plan_id'].errors['required']"> Plan name is requried</div>
                     </small>
                   </div>
                 </div>
