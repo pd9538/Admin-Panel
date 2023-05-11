@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/Model/customer';
 import { CustomerService } from '../services/customer.service';
 
+
 @Component({
   selector: 'app-customer-view',
   templateUrl: './customer-view.component.html',
@@ -12,6 +13,10 @@ export class CustomerViewComponent implements OnInit {
   custData:Customer[]=[];
   cust:any;
   custId:number;
+  planTable:any[]=[];
+  planStatus:any;
+  planname:any;
+  planDetail:any[]=[];
 
   customer_id:number;
   customer_type:string;
@@ -30,7 +35,9 @@ export class CustomerViewComponent implements OnInit {
   refered_by:number;
   wallet_balance:number;
 
-    constructor(private custService:CustomerService,private actRoute:ActivatedRoute){}
+    constructor(private custService:CustomerService,
+                private actRoute:ActivatedRoute
+      ){}
     ngOnInit(): void {
       this.custId=this.actRoute.snapshot.params.id;
       this.custService.getCustById(this.custId).subscribe((result:any)=>{
@@ -47,13 +54,20 @@ export class CustomerViewComponent implements OnInit {
           this.mobile=this.custData[1].mobile;
           this.email=this.custData[1].email;
           this.status=this.custData[1].status;
-          this.plan=this.custData[1].plan;
           this.referid=this.custData[1].referid;
           this.balance=this.custData[1].balance;
           this.plan_id=this.custData[1].plan_id;
           this.refered_by=this.custData[1].refered_by;
           this. wallet_balance=this.custData[1].wallet_balance;
-      })
+
+          this.custService.getPlanById(this.plan_id).subscribe((result)=>{
+            this.planStatus=result;
+            this.planDetail=Object.values(this.planStatus);
+
+            this.planname=this.planDetail[1].plan_name;
+          })
+      });
+
       }
 
 
